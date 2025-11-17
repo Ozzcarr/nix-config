@@ -1,19 +1,11 @@
 { host, ... }:
 let
   inherit (import ../../hosts/${host}/variables.nix)
-    alacrittyEnable
-    ghosttyEnable
     tmuxEnable
-    waybarChoice
-    weztermEnable
-    vscodeEnable
-    helixEnable
-    doomEmacsEnable
-    ;
+    waybarChoice;
 in
 {
   imports = [
-    ./amfora.nix
     ./bash.nix
     ./bashrc-personal.nix
     ./bat.nix
@@ -37,7 +29,6 @@ in
     ./rofi
     ./qt.nix
     ./scripts
-    ./scripts/gemini-cli.nix
     #./starship.nix
     #./starship-ddubs-1.nix
     ./stylix.nix
@@ -52,19 +43,5 @@ in
     ./zoxide.nix
     ./zsh
   ]
-  ++ (if helixEnable then [ ./evil-helix.nix ] else [ ])
-  ++ (if vscodeEnable then [ ./vscode.nix ] else [ ])
-  ++ (
-    if doomEmacsEnable then
-      [
-        ./editors/doom-emacs-install.nix
-        ./editors/doom-emacs.nix
-      ]
-    else
-      [ ]
-  )
-  ++ (if weztermEnable then [ ./wezterm.nix ] else [ ])
-  ++ (if ghosttyEnable then [ ./ghostty.nix ] else [ ])
-  ++ (if tmuxEnable then [ ./tmux.nix ] else [ ])
-  ++ (if alacrittyEnable then [ ./alacritty.nix ] else [ ]);
+  ++ (if tmuxEnable then [ ./tmux.nix ] else [ ]);
 }
