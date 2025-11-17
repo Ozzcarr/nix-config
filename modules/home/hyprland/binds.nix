@@ -11,7 +11,7 @@ in
     bind = [
       "$modifier,Return,exec,${terminal}"
       "$modifier,K,exec,list-keybinds"
-      "$modifier ,R,exec,rofi-launcher"
+      "$modifier,SPACE,exec,rofi-launcher"
       "$modifier SHIFT,Return,exec,rofi-launcher"
       "$modifier SHIFT,W,exec,web-search"
       "$modifier ALT,W,exec,wallsetter"
@@ -24,12 +24,13 @@ in
       "$modifier SHIFT,S,exec,hyprshot -m window -o $HOME/Pictures/ScreenShots"
       "$modifier ALT,S,exec,hyprshot -m region -o $HOME/Pictures/ScreenShots"
       "$modifier,D,exec,discord"
-      "$modifier,O,exec,obs"
+      "$modifier,O,togglespecialworkspace,obs"
+      "$modifier,M,togglespecialworkspace,spotify"
       "$modifier,C,exec,hyprpicker -a"
       "$modifier,G,exec,gimp"
       "$modifier shift,T,exec,pypr toggle term"
       "$modifier,T,exec, thunar"
-      "$modifier,M,exec,pavucontrol"
+      "$modifier,A,exec,pavucontrol"
       "$modifier,Q,killactive,"
       "$modifier,P,pseudo,"
       "$modifier,V,exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
@@ -72,8 +73,6 @@ in
       "$modifier,8,workspace,8"
       "$modifier,9,workspace,9"
       "$modifier,0,workspace,10"
-      "$modifier SHIFT,SPACE,movetoworkspace,special"
-      "$modifier,SPACE,togglespecialworkspace"
       "$modifier SHIFT,1,movetoworkspace,1"
       "$modifier SHIFT,2,movetoworkspace,2"
       "$modifier SHIFT,3,movetoworkspace,3"
@@ -104,6 +103,12 @@ in
     bindm = [
       "$modifier, mouse:272, movewindow"
       "$modifier, mouse:273, resizewindow"
+    ];
+
+    # Special workspaces autostart
+    workspace = [
+      "special:obs, on-created-empty: obs"
+      "special:spotify, on-created-empty: spotify"
     ];
   };
 }
