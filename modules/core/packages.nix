@@ -32,25 +32,20 @@
     # Hyprland systeminfo QT  (Optional)
     #inputs.hyprsysteminfo.packages.${pkgs.system}.default
 
-    #aider-chat # AI in terminal (Optional: Client only)
-    amfora # Fancy Terminal Browser For Gemini Protocol
     appimage-run # Needed For AppImage Support
     brightnessctl # For Screen Brightness Control
-    #claude-code # Claude code terminal AI (Optional: Client only)
     cliphist # Clipboard manager using rofi menu
     cmatrix # Matrix Movie Effect In Terminal
     cowsay # Great Fun Terminal Program
-    discord  # Stable client 
-    discord-canary  # beta  client 
+    discord
     docker-compose # Allows Controlling Docker From A Single File
     duf # Utility For Viewing Disk Usage In Terminal
     dysk # Disk space util nice formattting
     eza # Beautiful ls Replacement
     ffmpeg # Terminal Video / Audio Editing
     file-roller # Archive Manager
-    firefox # Firefox Browser
+    firefox
     gedit # Simple Graphical Text Editor
-    #gemini-cli # CLI AI client ONLY (optional)
     gimp # Great Photo Editor
     glxinfo # needed for inxi diag util
     greetd.tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
@@ -77,12 +72,12 @@
     rhythmbox # audio player
     ripgrep # Improved Grep
     socat # Needed For Screenshots
+    spotify
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     usbutils # Good Tools For USB Devices
     uwsm # Universal Wayland Session Manager (optional must be enabled)
     v4l-utils # Used For Things Like OBS Virtual Camera
-    vscode # Visual Studio Code
     warp-terminal # Terminal with AI support build in
     waypaper  # Change wallpaper
     wget # Tool For Fetching Files With Links
