@@ -475,7 +475,7 @@ pkgs.writeShellScriptBin "zcli" ''
       echo "Updating $FLAKE_NIX_PATH..."
 
       # Update host
-      if ${pkgs.gnused}/bin/sed -i "s/^[[:space:]]*host[[:space:]]*=[[:space:]]*\".*\"/    host = \"$target_hostname\"/" "$FLAKE_NIX_PATH"; then
+      if ${pkgs.gnused}/bin/sed -i "s/^[[:space:]]*host[[:space:]]*=[[:space:]]*\".*\"/      host = \"$target_hostname\"/" "$FLAKE_NIX_PATH"; then
         echo "Successfully updated host to: $target_hostname"
       else
         echo "Error: Failed to update host in $FLAKE_NIX_PATH" >&2
@@ -483,7 +483,7 @@ pkgs.writeShellScriptBin "zcli" ''
       fi
 
       # Update profile
-      if ${pkgs.gnused}/bin/sed -i "s/^[[:space:]]*profile[[:space:]]*=[[:space:]]*\".*\"/    profile = \"$target_profile\"/" "$FLAKE_NIX_PATH"; then
+      if ${pkgs.gnused}/bin/sed -i "s/^[[:space:]]*profile[[:space:]]*=[[:space:]]*\".*\"/      profile = \"$target_profile\"/" "$FLAKE_NIX_PATH"; then
         echo "Successfully updated profile to: $target_profile"
       else
         echo "Error: Failed to update profile in $FLAKE_NIX_PATH" >&2
