@@ -139,6 +139,7 @@ in
         enable_hyprcursor = false;
         warp_on_change_workspace = 2;
         no_warps = true;
+        inactive_timeout = 3;
       };
 
       render = {
