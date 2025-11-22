@@ -30,7 +30,7 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      host = "laptop";
+      host = "desktop";
       profile = "intel";
       username = "oscar";
 
