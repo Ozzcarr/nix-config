@@ -59,7 +59,7 @@
 
   # Enable Thunar GUI File Manager
   # Yazi is default File Manager
-  thunarEnable = false;
+  thunarEnable = true;
 
   # Themes, waybar and animation.
   # Only uncomment your selection
