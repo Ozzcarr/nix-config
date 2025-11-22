@@ -24,6 +24,18 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/home/oscar/data" =
+    { device = "/dev/disk/by-uuid/02f942d4-e960-408a-843c-bd49e5f68da6";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+
+  fileSystems."/home/oscar/games" =
+    { device = "/dev/disk/by-uuid/620dd297-1443-4cf5-be56-052a972c3782";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/976da3fa-4527-4008-802b-4ff7694e7ec4"; }
     ];
