@@ -4,5 +4,6 @@
     # audacity
     nodejs
     vscode
+    xivlauncher
   ];
 }
