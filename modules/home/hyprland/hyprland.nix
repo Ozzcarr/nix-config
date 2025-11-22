@@ -32,8 +32,8 @@ in
       source = ../../../wallpapers;
       recursive = true;
     };
-    ".face.icon".source = ./face.jpg;
-    ".config/face.jpg".source = ./face.jpg;
+    ".avatar.icon".source = ./avatar.png;
+    ".config/avatar.png".source = ./avatar.png;
   };
   wayland.windowManager.hyprland = {
     enable = true;
