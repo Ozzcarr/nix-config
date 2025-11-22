@@ -31,7 +31,7 @@
     let
       system = "x86_64-linux";
       host = "desktop";
-      profile = "intel";
+      profile = "nvidia";
       username = "oscar";
 
       # Deduplicate nixosConfigurations while preserving the top-level 'profile'
