@@ -22,19 +22,9 @@
     monitor = DP-2,2560x1440@165,0x0,1
     monitor = HDMI-A-2,1920x1080@60,2560x250,1
 
-    # Workspaces 1-5 on primary (DP-2)
-    workspace = DP-2,1
-    workspace = DP-2,2
-    workspace = DP-2,3
-    workspace = DP-2,4
-    workspace = DP-2,5
-
-    # Workspaces 6-10 (0) on secondary (HDMI-A-2)
-    workspace = HDMI-A-2,6
-    workspace = HDMI-A-2,7
-    workspace = HDMI-A-2,8
-    workspace = HDMI-A-2,9
-    workspace = HDMI-A-2,10
+    # Bind workspace ranges to monitors
+    workspace = DP-2,1-5
+    workspace = HDMI-A-2,6-10
   ";
 
   # Waybar Settings
