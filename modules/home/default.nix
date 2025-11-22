@@ -6,8 +6,6 @@ let
 in
 {
   imports = [
-    ./bash.nix
-    ./bashrc-personal.nix
     ./bat.nix
     ./btop.nix
     ./bottom.nix
