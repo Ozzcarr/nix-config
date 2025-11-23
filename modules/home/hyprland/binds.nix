@@ -4,6 +4,7 @@ let
     (import ../../../hosts/${host}/variables.nix)
     browser
     terminal
+    editor
     ;
 in
 {
@@ -14,7 +15,8 @@ in
       "$modifier SHIFT,W,exec,web-search"
       "$modifier ALT,W,exec,wallsetter"
       "$modifier SHIFT,N,exec,swaync-client -rs"
-      "$modifier,E,exec,${browser}"
+      "$modifier,W,exec,${browser}"
+      "$modifier,E,exec,${editor}"
       "$modifier,Y,exec,kitty -e yazi"
       "$modifier,S,exec,screenshootin"
       "$modifier CTRL,S,exec,hyprshot -m output -o $HOME/Pictures/ScreenShots"
@@ -28,7 +30,7 @@ in
       "$modifier shift,T,exec,pypr toggle term"
       "$modifier,T,exec, thunar"
       "$modifier,A,exec,pavucontrol"
-      "$modifier,W,killactive,"
+      "$modifier,Q,killactive,"
       "$modifier,P,pseudo,"
       "$modifier,V,exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$modifier SHIFT,I,togglesplit,"

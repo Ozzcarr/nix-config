@@ -26,6 +26,7 @@
   # Program Options
   browser = "firefox";
   terminal = "kitty";
+  editor = "code";
 
   keyboardLayout = "se";
   consoleKeyMap = "sv-latin1";

@@ -26,6 +26,7 @@
   # Program Options
   browser = "firefox";
   terminal = "kitty";
+  editor = "nvim";
 
   keyboardLayout = "se";
   consoleKeyMap = "sv-latin1";
