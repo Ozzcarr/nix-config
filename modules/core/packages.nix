@@ -69,6 +69,7 @@
     picard # For Changing Music Metadata & Getting Cover Art
     pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
     playerctl # Allows Changing Media Volume Through Scripts
+    python314
     rhythmbox # audio player
     ripgrep # Improved Grep
     socat # Needed For Screenshots
