@@ -25,6 +25,7 @@ in
       "$modifier,D,exec,discord"
       "$modifier,O,togglespecialworkspace,obs"
       "$modifier,M,togglespecialworkspace,spotify"
+      "$modifier,N,togglespecialworkspace,config"
       "$modifier,C,exec,hyprpicker -a"
       "$modifier,G,exec,gimp"
       "$modifier shift,T,exec,pypr toggle term"
@@ -106,6 +107,7 @@ in
 
     # Special workspaces autostart
     workspace = [
+      "special:config, on-created-empty: ${editor} ~/nix-config"
       "special:obs, on-created-empty: obs"
       "special:spotify, on-created-empty: spotify"
     ];
