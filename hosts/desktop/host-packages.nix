@@ -5,6 +5,7 @@
     libreoffice
     microsoft-edge
     nodejs
+    noisetorch # Noise Suppression For Microphones
     teams-for-linux
     vscode
     xivlauncher
