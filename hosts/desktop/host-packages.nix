@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     alsa-scarlett-gui
     # audacity
+    easyeffects # Advanced Audio Effects
     libreoffice
     microsoft-edge
     nodejs
