@@ -3,6 +3,7 @@
     alsa-scarlett-gui
     # audacity
     easyeffects # Advanced Audio Effects
+    keymapp
     libreoffice
     microsoft-edge
     nodejs
