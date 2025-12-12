@@ -3,8 +3,9 @@
     # audacity
     nodejs
     libreoffice
-    # microsoft-edge
-    # teams-for-linux
+    microsoft-edge
+    nodejs
+    teams-for-linux
     vscode
   ];
 }
