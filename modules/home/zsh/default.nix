@@ -50,6 +50,8 @@
       bindkey "\ej" down-line-or-history
       bindkey "\ek" up-line-or-history
       bindkey "\el" forward-word
+
+      eval "$(direnv hook zsh)"
     '';
 
     shellAliases = {

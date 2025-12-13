@@ -24,6 +24,11 @@
       enable = true;
       enableSSHSupport = true;
     };
+    nix-ld.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -70,8 +75,6 @@
     picard # For Changing Music Metadata & Getting Cover Art
     pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
     playerctl # Allows Changing Media Volume Through Scripts
-    python311
-    python312
     rhythmbox # audio player
     ripgrep # Improved Grep
     socat # Needed For Screenshots

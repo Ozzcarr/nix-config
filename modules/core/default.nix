@@ -20,7 +20,6 @@ in
     #./quickshell.nix  #Disabled for now not using it yet
     ./packages.nix
     ./printing.nix
-    ./python.nix
     # Conditionally import the display manager module
     (if vars.displayManager == "tui" then ./greetd.nix else ./sddm.nix)
     ./security.nix
