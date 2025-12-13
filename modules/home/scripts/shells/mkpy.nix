@@ -6,6 +6,8 @@ let
 in
 pkgs.writeShellScriptBin "mkpy" ''
   set -euo pipefail
+  export UV_CACHE_DIR=~/data/.config/uv
+  mkdir -p "$UV_CACHE_DIR"
 
   if [ "$#" -ne 1 ]; then
     echo "usage: mkpy <project-name>" >&2
@@ -32,9 +34,8 @@ pkgs.writeShellScriptBin "mkpy" ''
   if [ ! -e "$envrc" ]; then
     printf 'use nix\n' > "$envrc"
     chmod 0644 "$envrc"
+    echo "Created $envrc"
   fi
-
-  echo "Created $envrc"
 
   if command -v direnv >/dev/null 2>&1; then
   (

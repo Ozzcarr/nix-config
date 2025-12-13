@@ -18,6 +18,9 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
+    export UV_CACHE_DIR="$HOME/data/.config/uv"
+    mkdir -p "$UV_CACHE_DIR"
+
     if [ -f .venv/bin/activate ]; then
       . .venv/bin/activate
     fi
