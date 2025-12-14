@@ -27,7 +27,7 @@ in
       "$modifier,M,togglespecialworkspace,spotify"
       "$modifier,N,togglespecialworkspace,config"
       "$modifier,C,exec,hyprpicker -a"
-      "$modifier,G,exec,gimp"
+      "$modifier,G,togglespecialworkspace,gamestore"
       "$modifier shift,T,exec,pypr toggle term"
       "$modifier,T,exec, thunar"
       "$modifier,A,exec,pavucontrol"
@@ -110,6 +110,7 @@ in
       "special:config, on-created-empty: ${editor} ~/nix-config"
       "special:obs, on-created-empty: obs"
       "special:spotify, on-created-empty: spotify"
+      "special:gamestore, on-created-empty: steam"
     ];
   };
 }
