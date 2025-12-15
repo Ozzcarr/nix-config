@@ -72,7 +72,7 @@ in {
         "opacity 0.8 0.7, tag:settings*"
         "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
         "opacity 0.9 0.8, class:^(seahorse)$ # gnome-keyring gui"
-        "opacity 0.95 0.75, title:^(Picture-in-Picture)$"
+        "opacity 1.0 1.0, title:^(Picture-in-Picture)$"
         "pin, class:^([Ss]team)$, title:negative:^(Steam|Friends List)$"
         "pin, title:^(Picture-in-Picture)$"
         "keepaspectratio, title:^(Picture-in-Picture)$"
