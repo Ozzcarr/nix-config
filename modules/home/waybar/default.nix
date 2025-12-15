@@ -147,10 +147,13 @@ with lib; {
         min-height: 0;
       }
 
-      #waybar {
-        background: transparent;
+      window#waybar {
+        background: rgba(30, 30, 46, 0.92);
         color: @text;
-        margin: 5px 5px;
+        border: none;
+        border-bottom: 2px solid @red;
+        border-radius: 0;
+        margin: 0;
       }
 
       #workspaces {
