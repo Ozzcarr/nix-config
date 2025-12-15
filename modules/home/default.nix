@@ -29,6 +29,7 @@ in
     ./scripts
     #./starship.nix
     #./starship-ddubs-1.nix
+    ./stylix-catppuccin.nix
     ./stylix.nix
     ./swappy.nix
     ./swaync.nix
