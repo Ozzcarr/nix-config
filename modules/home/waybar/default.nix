@@ -55,8 +55,8 @@ with lib; {
           escape = true;
           interval = 5;
           tooltip = false;
-          exec = "playerctl metadata --format='{{ title }}'";
-          on-click = "playerctl play-pause";
+          exec = "playerctl --player=spotify,firefox metadata --format='{{ title }}'";
+          on-click = "playerctl --player=spotify,firefox play-pause";
           max-length = 50;
         };
 
