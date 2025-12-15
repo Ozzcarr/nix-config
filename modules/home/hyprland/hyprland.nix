@@ -165,9 +165,6 @@ in
       monitor=,preferred,auto,auto
       monitor=Virtual-1,1920x1080@60,auto,1
       ${extraMonitorSettings}
-      # To enable blur on waybar uncomment the line below
-      # Thanks to SchotjeChrisman
-      #layerrule = blur,waybar
     ";
   };
 }
