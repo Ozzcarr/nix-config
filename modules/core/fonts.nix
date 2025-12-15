@@ -15,6 +15,7 @@
       minecraftia
       nerd-fonts.im-writing
       nerd-fonts.blex-mono
+      nerd-fonts.fantasque-sans-mono
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk-sans

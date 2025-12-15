@@ -1,8 +1,7 @@
 { host, ... }:
 let
   inherit (import ../../hosts/${host}/variables.nix)
-    tmuxEnable
-    waybarChoice;
+    tmuxEnable;
 in
 {
   imports = [
@@ -35,7 +34,7 @@ in
     ./swaync.nix
     ./tealdeer.nix
     ./virtmanager.nix
-    waybarChoice
+    ./waybar
     ./wlogout
     ./xdg.nix
     ./yazi

@@ -1,0 +1,304 @@
+{
+  pkgs,
+  lib,
+  host,
+  config,
+  ...
+}:
+let
+  inherit (import ../../../hosts/${host}/variables.nix) clock24h;
+in
+with lib; {
+  xdg.configFile."waybar/mocha.css".source = ./mocha.css;
+
+  # Configure & Theme Waybar
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar;
+    settings = [
+      {
+        layer = "top";
+        position = "top";
+
+        modules-left = [ "hyprland/workspaces" "cpu" "memory" ];
+        modules-center = [ "custom/music" ];
+        modules-right = [ "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
+
+        "hyprland/workspaces" = {
+          disable-scroll = true;
+          sort-by-name = true;
+          format = " {icon} ";
+          format-icons = {
+            default = "";
+          };
+        };
+
+        "memory" = {
+          interval = 5;
+          format = " {}%";
+          tooltip = true;
+        };
+
+        "cpu" = {
+          interval = 5;
+          format = " {usage:2}%";
+          tooltip = true;
+        };
+
+        tray = {
+          icon-size = 21;
+          spacing = 10;
+        };
+
+        "custom/music" = {
+          format = "  {}";
+          escape = true;
+          interval = 5;
+          tooltip = false;
+          exec = "playerctl metadata --format='{{ title }}'";
+          on-click = "playerctl play-pause";
+          max-length = 50;
+        };
+
+        clock = {
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = " {:%d/%m/%Y}";
+          format = if clock24h then " {:%H:%M}" else " {:%I:%M %p}";
+        };
+
+        backlight = {
+          device = "intel_backlight";
+          format = "{icon}";
+          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+        };
+
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󱘖 {capacity}%";
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+        };
+
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-muted = "";
+          format-icons = {
+            default = [ "" "" " " ];
+          };
+          on-click = "pavucontrol";
+        };
+
+        "custom/notification" = {
+          tooltip = false;
+          format = "{icon} {}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
+          };
+          return-type = "json";
+          exec-if = "command -v swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
+        };
+
+        "custom/lock" = {
+          tooltip = false;
+          on-click = "sleep 0.2 && hyprlock";
+          format = "";
+        };
+
+        "custom/power" = {
+          tooltip = false;
+          on-click = "wlogout &";
+          format = "";
+        };
+      }
+    ];
+
+    style = ''
+      @import "mocha.css";
+
+      * {
+        font-family: "FantasqueSansMono Nerd Font", "Maple Mono NF";
+        font-size: 17px;
+        min-height: 0;
+      }
+
+      #waybar {
+        background: transparent;
+        color: @text;
+        margin: 5px 5px;
+      }
+
+      #workspaces {
+        border-radius: 1rem;
+        margin: 5px;
+        background-color: @surface0;
+        margin-left: 1rem;
+      }
+
+      #workspaces button {
+        color: @lavender;
+        border-radius: 1rem;
+        padding: 0.4rem;
+      }
+
+      #workspaces button.active {
+        color: @sky;
+        border-radius: 1rem;
+      }
+
+      #workspaces button:hover {
+        color: @sapphire;
+        border-radius: 1rem;
+      }
+
+      #cpu, #memory {
+        background-color: @surface0;
+        padding: 0.5rem 0.8rem;
+        margin: 5px 0;
+        color: @text;
+      }
+
+      #cpu {
+        margin-left: 0.5rem;
+        border-radius: 1rem 0 0 1rem;
+        color: @peach;
+      }
+
+      #memory {
+        margin-right: 0.75rem;
+        border-radius: 0 1rem 1rem 0;
+        color: @teal;
+      }
+
+      #custom-music,
+      #tray,
+      #backlight,
+      #clock,
+      #battery,
+      #pulseaudio,
+      #custom-notification,
+      #custom-lock,
+      #custom-power {
+        background-color: @surface0;
+        padding: 0.5rem 1rem;
+        margin: 5px 0;
+      }
+
+      #clock {
+        color: @blue;
+        border-radius: 0px 1rem 1rem 0px;
+        margin-right: 1rem;
+      }
+
+      #battery {
+        color: @green;
+      }
+
+      #battery.charging {
+        color: @green;
+      }
+
+      #battery.warning:not(.charging) {
+        color: @red;
+      }
+
+      #backlight {
+        color: @yellow;
+      }
+
+      #backlight, #battery {
+          border-radius: 0;
+      }
+
+      #pulseaudio {
+        color: @maroon;
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 1rem;
+      }
+
+      #custom-music {
+        color: @mauve;
+        border-radius: 1rem;
+      }
+
+      #custom-notification {
+        color: @lavender;
+        border-radius: 1rem;
+        margin-right: 0.5rem;
+      }
+
+      #custom-lock {
+          border-radius: 1rem 0px 0px 1rem;
+          color: @lavender;
+      }
+
+      #custom-power {
+          margin-right: 1rem;
+          border-radius: 0px 1rem 1rem 0px;
+          color: @red;
+      }
+
+      #tray {
+        margin-right: 1rem;
+        border-radius: 1rem;
+      }
+
+      tooltip {
+        background: @base;
+        color: @text;
+        border: 1px solid @surface1;
+        border-radius: 12px;
+        padding: 8px 10px;
+      }
+
+      tooltip label {
+        color: @text;
+      }
+
+      tooltip calendar {
+        color: @text;
+      }
+
+      tooltip calendar.header {
+        color: @mauve;
+      }
+
+      tooltip calendar.button {
+        color: @blue;
+      }
+
+      tooltip calendar.highlight {
+        color: @green;
+      }
+
+      tooltip calendar:indeterminate {
+        color: @overlay0;
+      }
+    '';
+  };
+}
