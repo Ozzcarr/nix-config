@@ -39,6 +39,7 @@
 
     appimage-run # Needed For AppImage Support
     brightnessctl # For Screen Brightness Control
+    clang-tools
     cliphist # Clipboard manager using rofi menu
     cmatrix # Matrix Movie Effect In Terminal
     cowsay # Great Fun Terminal Program
