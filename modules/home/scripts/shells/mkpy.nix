@@ -17,6 +17,7 @@ pkgs.writeShellScriptBin "mkpy" ''
   project_name="$1"
   target="$PWD/shell.nix"
   envrc="$PWD/.envrc"
+  gitignore="$PWD/.gitignore"
 
   if [ -e "$target" ]; then
     echo "error: $target already exists" >&2
@@ -30,6 +31,21 @@ pkgs.writeShellScriptBin "mkpy" ''
   chmod 0644 "$target"
 
   echo "Created $target"
+
+  if [ ! -e "$gitignore" ]; then
+    printf '.direnv/\n' > "$gitignore"
+    chmod 0644 "$gitignore"
+    echo "Created $gitignore (with .direnv/)"
+  else
+    if ! grep -qxF ".direnv/" "$gitignore"; then
+      # Append with a leading newline only if file doesn't already end with one
+      if [ -s "$gitignore" ] && [ "$(tail -c 1 "$gitignore" | wc -l)" -eq 0 ]; then
+        printf '\n' >> "$gitignore"
+      fi
+      printf '.direnv/\n' >> "$gitignore"
+      echo "Added .direnv/ to $gitignore"
+    fi
+  fi
 
   if [ ! -e "$envrc" ]; then
     printf 'use nix\n' > "$envrc"
