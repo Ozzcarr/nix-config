@@ -143,7 +143,7 @@ with lib; {
 
       * {
         font-family: "FantasqueSansMono Nerd Font", "Maple Mono NF";
-        font-size: 17px;
+        font-size: 14px;
         min-height: 0;
       }
 
@@ -158,15 +158,15 @@ with lib; {
 
       #workspaces {
         border-radius: 1rem;
-        margin: 5px;
+        margin: 4px;
         background-color: @surface0;
-        margin-left: 1rem;
+        margin-left: 0.75rem;
       }
 
       #workspaces button {
         color: @lavender;
         border-radius: 1rem;
-        padding: 0.4rem;
+        padding: 0.2rem 0.35rem;
       }
 
       #workspaces button.active {
@@ -181,19 +181,19 @@ with lib; {
 
       #cpu, #memory {
         background-color: @surface0;
-        padding: 0.5rem 0.8rem;
-        margin: 5px 0;
+        padding: 0.3rem 0.6rem;
+        margin: 4px 0;
         color: @text;
       }
 
       #cpu {
-        margin-left: 0.5rem;
+        margin-left: 0.4rem;
         border-radius: 1rem 0 0 1rem;
         color: @peach;
       }
 
       #memory {
-        margin-right: 0.75rem;
+        margin-right: 0.6rem;
         border-radius: 0 1rem 1rem 0;
         color: @teal;
       }
@@ -208,8 +208,8 @@ with lib; {
       #custom-lock,
       #custom-power {
         background-color: @surface0;
-        padding: 0.5rem 1rem;
-        margin: 5px 0;
+        padding: 0.3rem 0.8rem;
+        margin: 4px 0;
       }
 
       #clock {
