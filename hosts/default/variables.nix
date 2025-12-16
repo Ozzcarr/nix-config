@@ -73,4 +73,8 @@
   # Set network hostId if required (needed for zfs)
   # Otherwise leave as-is
   hostId = "5ab03f50";
+
+  # NoiseTorch auto start
+  deviceUnit = "";
+  deviceId = "";
 }

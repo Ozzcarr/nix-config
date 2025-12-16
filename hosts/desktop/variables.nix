@@ -89,4 +89,8 @@
   # Set network hostId if required (needed for zfs)
   # Otherwise leave as-is
   hostId = "5ab03f50";
+
+  # NoiseTorch auto start
+  deviceUnit = "sys-devices-pci0000:00-0000:00:14.0-usb1-1\x2d10-1\x2d10.2-1\x2d10.2:1.0-sound-card3-controlC3.device";
+  deviceId = "alsa_input.usb-Focusrite_Scarlett_2i2_4th_Gen_S2UTYJK37143B1-00.pro-input-0";
 }
