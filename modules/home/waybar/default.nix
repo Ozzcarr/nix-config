@@ -167,6 +167,7 @@ with lib; {
       #workspaces button {
         color: @lavender;
         border-radius: 1rem;
+        padding: 0rem;
       }
 
       #workspaces button label {
