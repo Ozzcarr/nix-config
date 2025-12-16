@@ -29,7 +29,7 @@ with lib; {
           sort-by-name = true;
           format = " {icon} ";
           format-icons = {
-            default = "";
+            default = "●";
           };
         };
 
@@ -168,6 +168,10 @@ with lib; {
         color: @lavender;
         border-radius: 1rem;
         padding: 0.2rem 0.35rem;
+      }
+
+      #workspaces button label {
+        font-size: 20px;
       }
 
       #workspaces button.active {
