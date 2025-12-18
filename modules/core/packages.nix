@@ -54,8 +54,6 @@
     gcc
     gedit # Simple Graphical Text Editor
     gimp # Great Photo Editor
-    glxinfo # needed for inxi diag util
-    greetd.tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     htop # Simple Terminal Based System Monitor
     hyprpicker # Color Picker
     hyprshot # Screen capture
@@ -66,6 +64,7 @@
     lm_sensors # Used For Getting Hardware Temps
     lolcat # Add Colors To Your Terminal Command Output
     lshw # Detailed Hardware Information
+    mesa-demos # needed for inxi diag util
     mpv # Incredible Video Player
     ncdu # Disk Usage Analyzer With Ncurses Interface
     nixfmt-rfc-style # Nix Formatter
@@ -80,6 +79,7 @@
     ripgrep # Improved Grep
     socat # Needed For Screenshots
     spotify
+    tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     usbutils # Good Tools For USB Devices

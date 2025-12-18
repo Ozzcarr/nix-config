@@ -65,9 +65,11 @@ in
         };
       };
 
+      gesture = [
+        "3, horizontal, workspace"
+      ];
+
       gestures = {
-        workspace_swipe = 1;
-        workspace_swipe_fingers = 3;
         workspace_swipe_distance = 500;
         workspace_swipe_invert = 1;
         workspace_swipe_min_speed_to_force = 30;
