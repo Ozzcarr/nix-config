@@ -111,6 +111,10 @@ in
       "special:obs, on-created-empty: obs"
       "special:spotify, on-created-empty: spotify"
       "special:gamestore, on-created-empty: steam"
+
+      # Smart gaps
+      "w[tv1], gapsout:0, gapsin:0"
+      "f[1], gapsout:0, gapsin:0"
     ];
   };
 }
