@@ -20,7 +20,7 @@ with lib; {
         layer = "top";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "cpu" "memory" ];
+        modules-left = [ "hyprland/workspaces" "cpu" "custom/gpu" "memory" ];
         modules-center = [ "custom/music" ];
         modules-right = [ "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
 
@@ -43,6 +43,45 @@ with lib; {
           interval = 5;
           format = " {usage:2}%";
           tooltip = true;
+        };
+
+        "custom/gpu" = {
+          interval = 5;
+          return-type = "json";
+          tooltip = true;
+          format = " {}%";
+
+          exec = ''
+            sh -c '
+              q() { nvidia-smi "$@" 2>/dev/null | head -n1 | tr -d "\r" | sed "s/,//g" | xargs; }
+
+              util="$(q --query-gpu=utilization.gpu --format=csv,noheader,nounits)"
+              temp="$(q --query-gpu=temperature.gpu --format=csv,noheader,nounits)"
+              pwr="$(q --query-gpu=power.draw --format=csv,noheader,nounits)"
+              memu="$(q --query-gpu=memory.used --format=csv,noheader,nounits)"
+              memt="$(q --query-gpu=memory.total --format=csv,noheader,nounits)"
+
+              [ -n "$util" ] || util="N/A"
+              [ -n "$temp" ] || temp="N/A"
+              [ -n "$pwr" ] || pwr="N/A"
+              [ -n "$memu" ] || memu="N/A"
+              [ -n "$memt" ] || memt="N/A"
+
+              esc() {
+                printf "%s" "$1" | sed \
+                  -e "s/\\\\/\\\\\\\\/g" \
+                  -e "s/\"/\\\\\"/g" \
+                  -e ":a;N;\$!ba;s/\n/\\\\n/g"
+              }
+
+              tip="GPU: $util%
+Temp: ''${temp}°C
+Power: ''${pwr} W
+VRAM: ''${memu} / ''${memt} MiB"
+
+              printf "{\"text\":\"%s\",\"tooltip\":\"%s\"}\n" "$(esc "$util")" "$(esc "$tip")"
+            '
+          '';
         };
 
         tray = {
@@ -184,7 +223,7 @@ with lib; {
         border-radius: 1rem;
       }
 
-      #cpu, #memory {
+      #cpu, #custom-gpu, #memory {
         background-color: @surface0;
         padding: 0.3rem 0.6rem;
         margin: 4px 0;
@@ -195,6 +234,11 @@ with lib; {
         margin-left: 0.4rem;
         border-radius: 1rem 0 0 1rem;
         color: @peach;
+      }
+
+      #custom-gpu {
+        border-radius: 0;
+        color: @sky;
       }
 
       #memory {
