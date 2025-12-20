@@ -7,6 +7,8 @@
 }:
 let
   inherit (import ../../../hosts/${host}/variables.nix) clock24h;
+  hasNvidia = pkgs.lib.elem "nvidia-smi" (pkgs.lib.attrNames pkgs);
+  gpuModule = if hasNvidia then [ "custom/gpu" ] else [];
 in
 with lib; {
   xdg.configFile."waybar/mocha.css".source = ./mocha.css;
@@ -20,7 +22,7 @@ with lib; {
         layer = "top";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "cpu" "custom/gpu" "memory" ];
+        modules-left = [ "hyprland/workspaces" "cpu" ] ++ gpuModule ++ [ "memory" ];
         modules-center = [ "custom/music" ];
         modules-right = [ "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
 
