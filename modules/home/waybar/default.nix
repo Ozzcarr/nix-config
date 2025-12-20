@@ -3,11 +3,12 @@
   lib,
   host,
   config,
+  profile,
   ...
 }:
 let
   inherit (import ../../../hosts/${host}/variables.nix) clock24h;
-  hasNvidia = pkgs.lib.elem "nvidia-smi" (pkgs.lib.attrNames pkgs);
+  hasNvidia = profile == "nvidia" || profile == "nvidia-laptop";
   gpuModule = if hasNvidia then [ "custom/gpu" ] else [];
 in
 with lib; {
