@@ -34,6 +34,7 @@ pkgs.writeShellScriptBin "mkpy" ''
 
   if [ ! -e "$gitignore" ]; then
     printf '.direnv/\n' > "$gitignore"
+    printf '.venv/\n' >> "$gitignore"
     chmod 0644 "$gitignore"
     echo "Created $gitignore (with .direnv/)"
   else
