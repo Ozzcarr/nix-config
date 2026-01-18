@@ -41,6 +41,7 @@
     brightnessctl # For Screen Brightness Control
     clang-tools
     cliphist # Clipboard manager using rofi menu
+    cmake
     cmatrix # Matrix Movie Effect In Terminal
     cowsay # Great Fun Terminal Program
     discord
