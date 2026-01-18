@@ -55,6 +55,7 @@
     gcc
     gedit # Simple Graphical Text Editor
     gimp # Great Photo Editor
+    gnumake
     htop # Simple Terminal Based System Monitor
     hyprpicker # Color Picker
     hyprshot # Screen capture
