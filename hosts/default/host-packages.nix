@@ -6,5 +6,6 @@
     # microsoft-edge
     # teams-for-linux
     vscode
+    # zoom-us
   ];
 }
