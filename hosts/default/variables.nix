@@ -54,10 +54,9 @@
   # This will set your color palette
   # Default background
   # Add new images to ~/nix-config/wallpapers
-  stylixImage = ../../wallpapers/AnimeGirlNightSky.jpg;
-  # stylixImage = ../../wallpapers/beautifulmountainscape.jpg;
-  # stylixImage = ../../wallpapers/mountainscapedark.jpg;
-  # stylixImage = ../../wallpapers/Rainnight.jpg;
+  # stylixImage = ../../wallpapers/AnimeGirlNightSky.jpg;
+  # stylixImage = ../../wallpapers/cat-blue-eye.png;
+  stylixImage = ../../wallpapers/cat-waves.png;
 
   # Set Animation style
   # Available options are:
