@@ -34,9 +34,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    # Hyprland systeminfo QT  (Optional)
-    #inputs.hyprsysteminfo.packages.${pkgs.system}.default
-
     appimage-run # Needed For AppImage Support
     brightnessctl # For Screen Brightness Control
     clang-tools
@@ -53,7 +50,6 @@
     file-roller # Archive Manager
     firefox
     gcc
-    gedit # Simple Graphical Text Editor
     gimp # Great Photo Editor
     gnumake
     htop # Simple Terminal Based System Monitor
@@ -68,16 +64,12 @@
     lshw # Detailed Hardware Information
     mesa-demos # needed for inxi diag util
     mpv # Incredible Video Player
-    ncdu # Disk Usage Analyzer With Ncurses Interface
     nixfmt-rfc-style # Nix Formatter
     nwg-displays # configure monitor configs via GUI
-    onefetch # provides zsaneyos build info on current system
     pavucontrol # For Editing Audio Levels & Devices
     pciutils # Collection Of Tools For Inspecting PCI Devices
-    picard # For Changing Music Metadata & Getting Cover Art
     pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
     playerctl # Allows Changing Media Volume Through Scripts
-    rhythmbox # audio player
     ripgrep # Improved Grep
     socat # Needed For Screenshots
     spotify
@@ -87,9 +79,7 @@
     usbutils # Good Tools For USB Devices
     uwsm # Universal Wayland Session Manager (optional must be enabled)
     v4l-utils # Used For Things Like OBS Virtual Camera
-    warp-terminal # Terminal with AI support build in
     waypaper  # Change wallpaper
     wget # Tool For Fetching Files With Links
-    ytmdl # Tool For Downloading Audio From YouTube
   ];
 }
