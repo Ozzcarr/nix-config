@@ -37,6 +37,7 @@ in
       "scanner"
       "wheel" #subdo access
       "vboxusers" #Virtual Box
+      "wireshark"
     ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;

@@ -31,6 +31,7 @@ in
     ./thunar.nix
     ./user.nix
     ./virtualisation.nix
+    ./wireshark.nix
     ./xserver.nix
     inputs.stylix.nixosModules.stylix
   ];

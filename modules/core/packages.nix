@@ -81,5 +81,6 @@
     v4l-utils # Used For Things Like OBS Virtual Camera
     waypaper  # Change wallpaper
     wget # Tool For Fetching Files With Links
+    wireshark
   ];
 }
