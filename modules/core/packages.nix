@@ -73,6 +73,7 @@
     ripgrep # Improved Grep
     socat # Needed For Screenshots
     spotify
+    traceroute
     tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
