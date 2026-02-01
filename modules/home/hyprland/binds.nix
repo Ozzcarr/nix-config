@@ -22,7 +22,7 @@ in
       "$modifier CTRL,S,exec,hyprshot -m output -o $HOME/Pictures/ScreenShots"
       "$modifier SHIFT,S,exec,hyprshot -m window -o $HOME/Pictures/ScreenShots"
       "$modifier ALT,S,exec,hyprshot -m region -o $HOME/Pictures/ScreenShots"
-      "$modifier,D,exec,discord"
+      "$modifier,D,exec,vesktop"
       "$modifier,O,togglespecialworkspace,obs"
       "$modifier,M,togglespecialworkspace,spotify"
       "$modifier,N,togglespecialworkspace,config"
