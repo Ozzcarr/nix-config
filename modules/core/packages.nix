@@ -41,7 +41,6 @@
     cmake
     cmatrix # Matrix Movie Effect In Terminal
     cowsay # Great Fun Terminal Program
-    discord
     docker-compose # Allows Controlling Docker From A Single File
     duf # Utility For Viewing Disk Usage In Terminal
     dysk # Disk space util nice formattting
@@ -80,6 +79,7 @@
     usbutils # Good Tools For USB Devices
     uwsm # Universal Wayland Session Manager (optional must be enabled)
     v4l-utils # Used For Things Like OBS Virtual Camera
+    vesktop # Alternate client for Discord with Vencord built-in
     waypaper  # Change wallpaper
     wget # Tool For Fetching Files With Links
     wireshark
