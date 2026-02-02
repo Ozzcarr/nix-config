@@ -21,7 +21,6 @@ in
     ./kitty.nix
     ./lazygit.nix
     ./obs-studio.nix
-    ./noisetorch.nix
     ./nvf.nix
     ./obs-studio.nix
     ./rofi

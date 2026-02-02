@@ -16,7 +16,6 @@ in
     ./network.nix
     ./nfs.nix
     ./nh.nix
-    ./noisetorch.nix
     #./quickshell.nix  #Disabled for now not using it yet
     ./packages.nix
     ./printing.nix
