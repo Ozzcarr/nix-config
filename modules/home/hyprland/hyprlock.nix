@@ -10,7 +10,7 @@
       };
       background = [
         {
-          path = "/home/${username}/Pictures/Wallpapers/beautifulmountainscape.jpg";
+          path = "/home/${username}/Pictures/Wallpapers/cat-waves.png";
           blur_passes = 3;
           blur_size = 8;
         }
