@@ -21,13 +21,10 @@ in
     ./kitty.nix
     ./lazygit.nix
     ./obs-studio.nix
-    ./nvf.nix
     ./obs-studio.nix
     ./rofi
     ./qt.nix
     ./scripts
-    #./starship.nix
-    #./starship-ddubs-1.nix
     ./stylix-catppuccin.nix
     ./stylix.nix
     ./swappy.nix
