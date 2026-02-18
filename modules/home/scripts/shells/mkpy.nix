@@ -15,7 +15,7 @@ pkgs.writeShellScriptBin "mkpy" ''
   fi
 
   project_name="$1"
-  target="$PWD/shell.nix"
+  target="$PWD/flake.nix"
   envrc="$PWD/.envrc"
   gitignore="$PWD/.gitignore"
 
@@ -49,7 +49,7 @@ pkgs.writeShellScriptBin "mkpy" ''
   fi
 
   if [ ! -e "$envrc" ]; then
-    printf 'use nix\n' > "$envrc"
+    printf 'use flake\n' > "$envrc"
     chmod 0644 "$envrc"
     echo "Created $envrc"
   fi
@@ -62,7 +62,7 @@ pkgs.writeShellScriptBin "mkpy" ''
 set -euo pipefail
 
 if ! command -v uv >/dev/null 2>&1; then
-  echo "uv not found inside the nix shell; list it in shell.nix packages." >&2
+  echo "uv not found inside the nix dev shell; add it to flake devShell packages." >&2
   exit 0
 fi
 
@@ -76,6 +76,6 @@ uv sync
 EOS
   )
   else
-    echo "direnv not found; run 'direnv allow' and uv commands manually." >&2
+    echo "direnv not found; run 'nix develop' and uv commands manually." >&2
   fi
 ''
