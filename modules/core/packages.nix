@@ -46,6 +46,7 @@
     duf # Utility For Viewing Disk Usage In Terminal
     dysk # Disk space util nice formattting
     eza # Beautiful ls Replacement
+    fd # A simple, fast and user-friendly alternative to 'find'
     ffmpeg # Terminal Video / Audio Editing
     file-roller # Archive Manager
     firefox
