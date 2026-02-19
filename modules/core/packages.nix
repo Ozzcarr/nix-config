@@ -65,6 +65,7 @@
     lshw # Detailed Hardware Information
     mesa-demos # needed for inxi diag util
     mpv # Incredible Video Player
+    neovim
     nixfmt-rfc-style # Nix Formatter
     nwg-displays # configure monitor configs via GUI
     pavucontrol # For Editing Audio Levels & Devices
