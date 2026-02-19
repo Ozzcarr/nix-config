@@ -10,7 +10,7 @@
       scrollback_lines = 10000;
       enable_audio_bell = false;
       mouse_hide_wait = 60;
-      cursor_trail = 1;
+      cursor_trail = 0;
       tab_fade = 1;
       active_tab_font_style = "bold";
       inactive_tab_font_style = "bold";
