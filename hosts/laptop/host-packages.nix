@@ -5,7 +5,6 @@
     microsoft-edge
     nodejs
     teams-for-linux
-    vscode
     zoom-us
   ];
 }

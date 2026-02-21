@@ -9,7 +9,6 @@
     nodejs
     osu-lazer-bin
     teams-for-linux
-    vscode
     xivlauncher
     zoom-us
   ];
