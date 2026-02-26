@@ -11,6 +11,7 @@ in
       disableStartupPopups = true;
       notARepository = "skip";
       promptToReturnFromSubprocess = false;
+      os.editPreset = "vscode";
       update.method = "never";
       git = {
         commit.signOff = true;
