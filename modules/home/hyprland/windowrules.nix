@@ -58,6 +58,8 @@ in {
         "float, initialTitle:(Add Folder to Workspace)"
         "float, initialTitle:^([Oo]pen|[Ss]ave|[Ss]elect|[Cc]hoose).*(file|files|folder|folders|File|Files|Folder|Folders).*$"
         "float, title:^([Oo]pen|[Ss]ave|[Ss]elect|[Cc]hoose).*(file|files|folder|folders|File|Files|Folder|Folders).*$"
+        "center, initialTitle:^([Oo]pen|[Ss]ave|[Ss]elect|[Cc]hoose).*(file|files|folder|folders|File|Files|Folder|Folders).*$"
+        "center, title:^([Oo]pen|[Ss]ave|[Ss]elect|[Cc]hoose).*(file|files|folder|folders|File|Files|Folder|Folders).*$"
         "float, initialTitle:(wants to save)"
         "size 70% 60%, initialTitle:^([Oo]pen|[Ss]ave|[Ss]elect|[Cc]hoose).*(file|files|folder|folders|File|Files|Folder|Folders).*$"
         "size 70% 60%, title:^([Oo]pen|[Ss]ave|[Ss]elect|[Cc]hoose).*(file|files|folder|folders|File|Files|Folder|Folders).*$"
