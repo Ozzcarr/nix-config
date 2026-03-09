@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     alsa-scarlett-gui
-    # audacity
+    audacity
     easyeffects # Advanced Audio Effects
     keymapp
     libreoffice
