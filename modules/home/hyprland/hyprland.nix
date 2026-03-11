@@ -137,7 +137,7 @@ in
 
       cursor = {
         sync_gsettings_theme = true;
-        no_hardware_cursors = 1;
+        no_hardware_cursors = 0;
         enable_hyprcursor = false;
         warp_on_change_workspace = 2;
         no_warps = true;
