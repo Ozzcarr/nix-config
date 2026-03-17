@@ -25,7 +25,7 @@ with lib; {
 
         modules-left = [ "hyprland/workspaces" "cpu" ] ++ gpuModule ++ [ "memory" ];
         modules-center = [ "custom/music" ];
-        modules-right = [ "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
+        modules-right = [ "custom/pomodoro" "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -100,6 +100,17 @@ VRAM: ''${memu} / ''${memt} MiB"
           exec = "playerctl --player=spotify,firefox metadata --format='{{ title }}'";
           on-click = "playerctl --player=spotify,firefox play-pause";
           max-length = 50;
+        };
+
+        "custom/pomodoro" = {
+          interval = 1;
+          return-type = "json";
+          format = "{}";
+          exec = "pomodoro-waybar status";
+          on-click = "pomodoro-waybar toggle";
+          on-click-right = "pomodoro-waybar reset";
+          on-click-middle = "pomodoro-waybar skip";
+          tooltip = true;
         };
 
         clock = {
@@ -255,6 +266,7 @@ VRAM: ''${memu} / ''${memt} MiB"
       #backlight,
       #clock,
       #battery,
+      #custom-pomodoro,
       #pulseaudio,
       #custom-notification,
       #custom-lock,
@@ -299,6 +311,26 @@ VRAM: ''${memu} / ''${memt} MiB"
       #custom-music {
         color: @mauve;
         border-radius: 1rem;
+      }
+
+      #custom-pomodoro {
+        border-radius: 1rem;
+      }
+
+      #custom-pomodoro.focus {
+        color: @peach;
+      }
+
+      #custom-pomodoro.break {
+        color: @green;
+      }
+
+      #custom-pomodoro.paused {
+        color: @yellow;
+      }
+
+      #custom-pomodoro.idle {
+        color: @overlay1;
       }
 
       #custom-notification {

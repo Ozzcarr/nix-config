@@ -11,6 +11,7 @@
     (import ./note.nix { inherit pkgs; })
     (import ./note-from-clipboard.nix { inherit pkgs; })
     (import ./nvidia-offload.nix { inherit pkgs; })
+    (import ./pomodoro-waybar.nix { inherit pkgs; })
     (import ./rofi-launcher.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
     (import ./shells/mkpy.nix { inherit pkgs; })
