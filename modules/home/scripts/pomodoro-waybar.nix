@@ -7,6 +7,8 @@ pkgs.writeShellScriptBin "pomodoro-waybar" ''
   STATE_DIR="''${XDG_STATE_HOME:-$HOME/.local/state}/pomodoro"
   STATE_FILE="$STATE_DIR/state"
   LOCK_FILE="$STATE_DIR/lock"
+  SOUND_FILE="${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/complete.oga"
+  SOUND_VOLUME_DB="''${POMODORO_SOUND_DB:--18.0}"
 
   FOCUS_SECONDS=$((25 * 60))
   BREAK_SECONDS=$((5 * 60))
@@ -18,6 +20,15 @@ pkgs.writeShellScriptBin "pomodoro-waybar" ''
 
   notify() {
     ${pkgs.libnotify}/bin/notify-send "Pomodoro" "$1"
+  }
+
+  play_switch_sound() {
+    if [ -f "$SOUND_FILE" ]; then
+      ${pkgs.libcanberra-gtk3}/bin/canberra-gtk-play -V "$SOUND_VOLUME_DB" -f "$SOUND_FILE" >/dev/null 2>&1 || true
+      return
+    fi
+
+    printf '\a' >/dev/null 2>&1 || true
   }
 
   read_state() {
@@ -77,11 +88,13 @@ EOF
         remaining="$BREAK_SECONDS"
         end_ts=$((now + BREAK_SECONDS))
         notify "Focus done. Break started (5 min)."
+        play_switch_sound
       else
         phase="focus"
         remaining="$FOCUS_SECONDS"
         end_ts=$((now + FOCUS_SECONDS))
         notify "Break done. Focus started (25 min)."
+        play_switch_sound
       fi
       write_state "$mode" "$phase" "$remaining" "$end_ts"
     fi
