@@ -6,11 +6,15 @@ pkgs.writeShellScriptBin "pomodoro-waybar" ''
 
   STATE_DIR="''${XDG_STATE_HOME:-$HOME/.local/state}/pomodoro"
   STATE_FILE="$STATE_DIR/state"
+  LOCK_FILE="$STATE_DIR/lock"
 
   FOCUS_SECONDS=$((25 * 60))
   BREAK_SECONDS=$((5 * 60))
 
   mkdir -p "$STATE_DIR"
+
+  exec 9>"$LOCK_FILE"
+  ${pkgs.util-linux}/bin/flock 9
 
   notify() {
     ${pkgs.libnotify}/bin/notify-send "Pomodoro" "$1"
