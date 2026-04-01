@@ -1,4 +1,8 @@
-{ ... }: {
+{ host, ... }:
+let
+  inherit (import ../../../hosts/${host}/variables.nix) editor;
+in
+{
   wayland.windowManager.hyprland = {
     settings = {
       env = [
@@ -23,7 +27,7 @@
         #"AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1:/dev/card2"
         "GDK_SCALE,1"
         "QT_SCALE_FACTOR,1"
-        "EDITOR,nvim"
+        "EDITOR,${editor}"
         # Set terminal and xdg_terminal_emulator to kitty
         # To provent yazi from starting xterm when run from rofi menu
         # You can set to your preferred terminal if you you like

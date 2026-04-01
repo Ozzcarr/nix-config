@@ -1,5 +1,6 @@
 { pkgs, lib, host, ... }:
 let
+  inherit (import ../../hosts/${host}/variables.nix) editor;
   hostPackagesFile = builtins.readFile ../../hosts/${host}/host-packages.nix;
   hasMicrosoftEdge = builtins.any (
     line:
@@ -39,6 +40,12 @@ in {
         "x-scheme-handler/https" = "firefox.desktop";
         "x-scheme-handler/about" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
+      } // lib.optionalAttrs (editor == "code") {
+        "text/plain" = "code.desktop";
+        "application/json" = "code.desktop";
+        "application/ndjson" = "code.desktop";
+        "text/javascript" = "code.desktop";
+        "application/javascript" = "code.desktop";
       };
     };
     portal = {
