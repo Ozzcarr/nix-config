@@ -16,6 +16,12 @@ in
       git = {
         commit.signOff = true;
         parseEmoji = true;
+        pagers = [
+          {
+            colorArg = "always";
+            pager = "delta --paging=never";
+          }
+        ];
       };
       gui = {
         theme = {
