@@ -205,7 +205,7 @@ VRAM: ''${memu} / ''${memt} MiB"
         background: rgba(30, 30, 46, 0.92);
         color: @text;
         border: none;
-        border-bottom: 2px solid @red;
+        border-bottom: 2px solid @mauve;
         border-radius: 0;
         margin: 0;
       }
