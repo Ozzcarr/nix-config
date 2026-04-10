@@ -36,7 +36,7 @@ in
     ./xdg.nix
     ./yazi
     ./zoxide.nix
-    ./zsh
+    ./zsh.nix
   ]
   ++ (if tmuxEnable then [ ./tmux.nix ] else [ ]);
 }
