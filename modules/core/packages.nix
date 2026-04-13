@@ -4,7 +4,7 @@
   ...
 }:
 let
-  unstablePkgs = import inputs.nixpkgs-unstable {
+  unstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
     config = { allowUnfree = true; };
   };
@@ -90,7 +90,7 @@ in
     uwsm # Universal Wayland Session Manager (optional must be enabled)
     v4l-utils # Used For Things Like OBS Virtual Camera
     vesktop # Alternate client for Discord with Vencord built-in
-    unstablePkgs.vscode
+    unstable.vscode
     waypaper  # Change wallpaper
     wget # Tool For Fetching Files With Links
     wireshark
