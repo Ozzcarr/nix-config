@@ -82,6 +82,7 @@ in
     ripgrep # Improved Grep
     socat # Needed For Screenshots
     spotify
+    unstable.tailscale
     traceroute
     tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     unrar # Tool For Handling .rar Files

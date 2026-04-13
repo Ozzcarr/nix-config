@@ -1,4 +1,16 @@
-{ profile, ... }: {
+{
+  profile,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+    config = { allowUnfree = true; };
+  };
+in
+{
   # Services to start
   services = {
     libinput.enable = true; # Input Handling
@@ -16,6 +28,11 @@
     blueman.enable = true; # Bluetooth Support
     tumbler.enable = true; # Image/video preview
     gnome.gnome-keyring.enable = true;
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      package = unstable.tailscale;
+    };
 
     smartd = {
       enable =
