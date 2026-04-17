@@ -15,9 +15,9 @@
       timeout = 10;
       timeout-low = 5;
       timeout-critical = 0;
-      fit-to-screen = false;
+      fit-to-screen = true;
       control-center-width = 500;
-      control-center-height = 1025;
+      control-center-height = 800;
       notification-window-width = 500;
       keyboard-shortcuts = true;
       image-visibility = "when-available";
@@ -82,7 +82,7 @@
         background: #${config.lib.stylix.colors.base00};
         padding: 10px;
         border-radius: 5px;
-        border: 2px solid #${config.lib.stylix.colors.base0D};
+        border: 2px solid #${config.lib.stylix.colors.base0E};
         margin: 0;
       }
       .notification-default-action {
@@ -101,19 +101,19 @@
       }
       .close-button:hover {
         box-shadow: none;
-        background: #${config.lib.stylix.colors.base0D};
+        background: #${config.lib.stylix.colors.base0E};
         transition: all .15s ease-in-out;
         border: none
       }
       .notification-action {
-        border: 2px solid #${config.lib.stylix.colors.base0D};
+        border: 2px solid #${config.lib.stylix.colors.base0E};
         border-top: none;
         border-radius: 5px;
       }
       .notification-default-action:hover,
       .notification-action:hover {
-        color: #${config.lib.stylix.colors.base0B};
-        background: #${config.lib.stylix.colors.base0B}
+        color: #${config.lib.stylix.colors.base00};
+        background: #${config.lib.stylix.colors.base0E}
       }
       .notification-default-action {
         border-radius: 5px;
@@ -165,7 +165,7 @@
         font-size: 16px;
         font-weight: 700;
         background: transparent;
-        color: rgba(158, 206, 106, 1);
+        color: #${config.lib.stylix.colors.base0E};
         text-shadow: none
       }
       .time {
@@ -185,7 +185,7 @@
       }
       .control-center {
         background: #${config.lib.stylix.colors.base00};
-        border: 2px solid #${config.lib.stylix.colors.base0C};
+        border: 2px solid #${config.lib.stylix.colors.base0E};
         border-radius: 5px;
       }
       .control-center-list {
@@ -201,7 +201,7 @@
         background: alpha(black, 0)
       }
       .widget-title {
-        color: #${config.lib.stylix.colors.base0B};
+        color: #${config.lib.stylix.colors.base0E};
         background: #${config.lib.stylix.colors.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
@@ -226,12 +226,12 @@
         margin: 10px 10px 5px 10px;
         border-radius: 5px;
         font-size: large;
-        color: #${config.lib.stylix.colors.base0B};
+        color: #${config.lib.stylix.colors.base0E};
       }
       .widget-dnd>switch {
         border-radius: 5px;
         /* border: 1px solid #${config.lib.stylix.colors.base0B}; */
-        background: #${config.lib.stylix.colors.base0B};
+        background: #${config.lib.stylix.colors.base0E};
       }
       .widget-dnd>switch:checked {
         background: #${config.lib.stylix.colors.base08};
@@ -289,7 +289,7 @@
         color: #${config.lib.stylix.colors.base05};
       }
       .widget-volume>box>button {
-        background: #${config.lib.stylix.colors.base0B};
+        background: #${config.lib.stylix.colors.base0E};
         border: none
       }
       .per-app-volume {
