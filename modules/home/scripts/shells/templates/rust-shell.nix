@@ -18,11 +18,12 @@
             name = "__PROJECT_NAME__";
 
             packages = with pkgs; [
-              cargo
-              clippy
-              rustc
-              rustfmt
+              rustup
             ];
+
+            shellHook = ''
+              rustup default stable &>/dev/null
+            '';
           };
         });
     };
