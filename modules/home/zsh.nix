@@ -1,4 +1,5 @@
 { profile
+, username
 , pkgs
 , lib
 , ...
@@ -38,6 +39,7 @@
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       fr = "nh os switch --hostname ${profile}";
+      hr = "nh home switch /home/${username}/nix-config";
       fu = "nh os switch --hostname ${profile} --update";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";

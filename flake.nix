@@ -24,6 +24,10 @@
       host = "desktop";
       profile = "nvidia";
       username = "oscar";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       # Deduplicate nixosConfigurations while preserving the top-level 'profile'
       mkNixosConfig = gpuProfile: nixpkgs.lib.nixosSystem {
@@ -39,6 +43,22 @@
           nix-flatpak.nixosModules.nix-flatpak
         ];
       };
+
+      mkHomeConfig = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs username host profile;
+        };
+        modules = [
+          inputs.stylix.homeModules.stylix
+          ./modules/home
+          {
+            home.username = username;
+            home.homeDirectory = "/home/${username}";
+            home.stateVersion = "23.11";
+          }
+        ];
+      };
     in
     {
       nixosConfigurations = {
@@ -48,6 +68,10 @@
         amd-hybrid = mkNixosConfig "amd-hybrid";
         intel = mkNixosConfig "intel";
         vm = mkNixosConfig "vm";
+      };
+
+      homeConfigurations = {
+        ${username} = mkHomeConfig;
       };
     };
 }
