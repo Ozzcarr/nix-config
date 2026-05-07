@@ -21,7 +21,6 @@ in
     ./kitty.nix
     ./lazygit.nix
     ./obs-studio.nix
-    ./obs-studio.nix
     ./rofi
     ./qt.nix
     ./scripts
