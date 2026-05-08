@@ -23,6 +23,8 @@ in
       "$modifier SHIFT,S,exec,hyprshot -m window -o $HOME/Pictures/ScreenShots"
       "$modifier ALT,S,exec,hyprshot -m region -o $HOME/Pictures/ScreenShots"
       "$modifier,D,exec,vesktop"
+      "$modifier SHIFT,M,exec,vesktop-mute"
+      "$modifier SHIFT,D,exec,vesktop-deafen"
       "$modifier,O,togglespecialworkspace,obs"
       "$modifier,M,togglespecialworkspace,spotify"
       "$modifier,N,togglespecialworkspace,config"

@@ -25,7 +25,7 @@ with lib; {
 
         modules-left = [ "hyprland/workspaces" "cpu" ] ++ gpuModule ++ [ "memory" ];
         modules-center = [ "custom/music" ];
-        modules-right = [ "custom/pomodoro" "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
+        modules-right = [ "custom/pomodoro" "custom/vesktop-mic" "custom/vesktop-out" "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -110,6 +110,24 @@ VRAM: ''${memu} / ''${memt} MiB"
           on-click = "pomodoro-waybar toggle";
           on-click-right = "pomodoro-waybar reset";
           on-click-middle = "pomodoro-waybar skip";
+          tooltip = true;
+        };
+
+        "custom/vesktop-mic" = {
+          interval = 1;
+          return-type = "json";
+          format = "󰍬 {}";
+          exec = "vesktop-status mic";
+          on-click = "vesktop-mute";
+          tooltip = true;
+        };
+
+        "custom/vesktop-out" = {
+          interval = 1;
+          return-type = "json";
+          format = "󰕾 {}";
+          exec = "vesktop-status out";
+          on-click = "vesktop-deafen";
           tooltip = true;
         };
 
@@ -262,6 +280,8 @@ VRAM: ''${memu} / ''${memt} MiB"
       }
 
       #custom-music,
+      #custom-vesktop-mic,
+      #custom-vesktop-out,
       #tray,
       #backlight,
       #clock,
@@ -330,6 +350,38 @@ VRAM: ''${memu} / ''${memt} MiB"
       }
 
       #custom-pomodoro.idle {
+        color: @overlay1;
+      }
+
+      #custom-vesktop-mic {
+        border-radius: 1rem 0 0 1rem;
+        margin-left: 1rem;
+        padding-right: 0.45rem;
+        color: @green;
+      }
+
+      #custom-vesktop-out {
+        border-radius: 0 1rem 1rem 0;
+        margin-right: 0;
+        padding-left: 0.45rem;
+        color: @green;
+      }
+
+      #custom-vesktop-mic.active,
+      #custom-vesktop-out.active {
+        color: @green;
+      }
+
+      #custom-vesktop-mic.muted {
+        color: @red;
+      }
+
+      #custom-vesktop-out.deafened {
+        color: @red;
+      }
+
+      #custom-vesktop-mic.missing,
+      #custom-vesktop-out.missing {
         color: @overlay1;
       }
 
