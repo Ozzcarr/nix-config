@@ -53,7 +53,7 @@
     settings = {
       "$schema" = "https://starship.rs/config-schema.json";
 
-      format = "[](red)$os$username[](bg:peach fg:red)$directory[](bg:yellow fg:peach)$git_branch$git_status[](fg:yellow bg:green)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:green bg:sapphire)$nix_shell[](fg:sapphire bg:lavender)$time[ ](fg:lavender)$cmd_duration$line_break$character";
+      format = "[](red)$os$username$hostname[](bg:peach fg:red)$directory[](bg:yellow fg:peach)$git_branch$git_status[](fg:yellow bg:green)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:green bg:sapphire)$nix_shell[](fg:sapphire bg:lavender)$time[ ](fg:lavender)$cmd_duration$line_break$character";
 
       palette = lib.mkForce "catppuccin_mocha";
 
@@ -90,6 +90,12 @@
         style_user = "bg:red fg:crust";
         style_root = "bg:red fg:crust";
         format = "[ $user]($style)";
+      };
+
+      hostname = {
+        ssh_only = true;
+        style = "bg:red fg:crust";
+        format = "[@$hostname]($style)";
       };
 
       directory = {
