@@ -331,6 +331,7 @@ VRAM: ''${memu} / ''${memt} MiB"
       #custom-music {
         color: @mauve;
         border-radius: 1rem;
+        margin-right: 1rem;
       }
 
       #custom-pomodoro {
