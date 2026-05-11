@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.kitty;
     settings = {
-      font_family = "JetBrains Mono";
+      font_family = "JetBrainsMonoNF";
       font_size = 12;
       wheel_scroll_min_lines = 1;
       window_padding_width = 4;

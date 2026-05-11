@@ -4,6 +4,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = lib.mkForce "prefer-dark";
+      monospace-font-name = lib.mkForce "JetBrainsMonoNF 12";
     };
   };
 
