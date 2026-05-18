@@ -12,10 +12,10 @@ in
     bind = [
       "$modifier,Return,exec,${terminal}"
       "$modifier,SPACE,exec,rofi-launcher"
-      "$modifier SHIFT,W,exec,web-search"
       "$modifier ALT,W,exec,wallsetter"
       "$modifier SHIFT,N,exec,swaync-client -rs"
       "$modifier,W,exec,${browser}"
+      "$modifier SHIFT,W,exec,sh -c '${browser} --private-window || ${browser} --incognito'"
       "$modifier,E,exec,${editor}"
       "$modifier,Y,exec,kitty -e yazi"
       "$modifier,S,exec,screenshootin"
