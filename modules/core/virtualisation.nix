@@ -3,6 +3,7 @@
   virtualisation = {
     docker = {
       enable = true;
+      package = pkgs.docker_29;
     };
 
     podman.enable = false;
@@ -24,6 +25,6 @@
   environment.systemPackages = with pkgs; [
     virt-viewer # View Virtual Machines
     lazydocker
-    docker-client
+    docker_29
   ];
 }
