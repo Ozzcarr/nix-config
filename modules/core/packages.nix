@@ -95,5 +95,6 @@ in
     waypaper  # Change wallpaper
     wget # Tool For Fetching Files With Links
     wireshark
+    xrandr # Command line interface to X11 Resize, Rotate, and Reflect (RandR) extension
   ];
 }
