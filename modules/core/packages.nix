@@ -24,7 +24,6 @@ in
     seahorse.enable = true;
     fuse.userAllowOther = true;
     mtr.enable = true;
-    adb.enable = true;
     hyprlock.enable = true;
     gnupg.agent = {
       enable = true;
@@ -41,6 +40,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    android-tools # adb/fastboot
     appimage-run # Needed For AppImage Support
     brightnessctl # For Screen Brightness Control
     clang-tools
@@ -74,7 +74,7 @@ in
     mesa-demos # needed for inxi diag util
     mpv # Incredible Video Player
     neovim
-    nixfmt-rfc-style # Nix Formatter
+    nixfmt # Nix Formatter
     nwg-displays # configure monitor configs via GUI
     pavucontrol # For Editing Audio Levels & Devices
     pciutils # Collection Of Tools For Inspecting PCI Devices
