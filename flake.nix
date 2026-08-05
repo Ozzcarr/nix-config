@@ -10,7 +10,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     stylix.url = "github:danth/stylix/release-26.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
-    claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
+    claude-desktop.url = "github:patrickjaja/claude-desktop-extra";
   };
 
   outputs =
