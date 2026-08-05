@@ -22,8 +22,8 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      host = "desktop";
-      profile = "nvidia";
+      host = "laptop";
+      profile = "intel";
       username = "oscar";
       pkgs = import nixpkgs {
         inherit system;
