@@ -5,6 +5,8 @@
 
   browser = "firefox";
   terminal = "kitty";
+
+  # GUI editor only. $EDITOR is neovim, via programs.neovim.defaultEditor.
   editor = "code";
 
   keyboardLayout = "se";

@@ -41,8 +41,6 @@
     '';
 
     shellAliases = {
-      sv = "sudo nvim";
-      v = "nvim";
       c = "clear";
       ".." = "cd ..";
       "..." = "cd ../..";
