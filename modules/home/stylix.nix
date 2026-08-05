@@ -33,6 +33,7 @@
       hyprlock.enable = false;
       ghostty.enable = false;
       yazi.enable = false;
+      neovim.enable = false;
       qt = {
         enable = true;
         platform = "qtct";

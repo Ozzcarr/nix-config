@@ -4,41 +4,43 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
   url = "https://github.com/ozzcarr/dotfiles";
   clone = "${config.home.homeDirectory}/dotfiles";
 
-  # "live" symlinks into the clone, so edits apply without a rebuild.
-  # "store" uses the revision pinned in flake.lock, read-only.
-  mode = "live";
-
-  # Directory in the repo, which is also its name under ~/.config, mapped to the
-  # package it configures. Adding a program here installs it and links its config.
+  # Stow package -> the paths it owns, each relative to $HOME and present
+  # verbatim inside the package. `pkg` is optional.
   managed = {
-    yazi = pkgs.yazi;
+    yazi = {
+      pkg = pkgs.yazi;
+      links = [ ".config/yazi" ];
+    };
+    # Installed system-wide by modules/core/packages.nix.
+    nvim = {
+      links = [ ".config/nvim" ];
+    };
   };
 
-  sourceFor =
-    name:
-    if mode == "live" then
-      config.lib.file.mkOutOfStoreSymlink "${clone}/${name}"
-    else
-      "${inputs.dotfiles}/${name}";
+  # Out of store, so edits need no rebuild and programs can write inside their
+  # own config directory (vim.pack keeps a lockfile in ~/.config/nvim).
+  sourceFor = path: config.lib.file.mkOutOfStoreSymlink "${clone}/${path}";
 in
 {
-  home.packages = lib.attrValues managed;
+  home.packages = lib.catAttrs "pkg" (lib.attrValues managed);
 
-  xdg.configFile = lib.mapAttrs (name: _: { source = sourceFor name; }) managed;
+  home.file = lib.concatMapAttrs (
+    name: entry:
+    lib.listToAttrs (
+      map (link: lib.nameValuePair link { source = sourceFor "${name}/${link}"; }) entry.links
+    )
+  ) managed;
 
-  home.activation = lib.mkIf (mode == "live") {
-    cloneDotfiles = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
-      if [ ! -e ${lib.escapeShellArg clone} ]; then
-        run ${lib.getExe pkgs.git} clone ${lib.escapeShellArg url} ${lib.escapeShellArg clone} \
-          || warnEcho "could not clone dotfiles; links under ~/.config will dangle"
-      fi
-    '';
-  };
+  home.activation.cloneDotfiles = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
+    if [ ! -e ${lib.escapeShellArg clone} ]; then
+      run ${lib.getExe pkgs.git} clone ${lib.escapeShellArg url} ${lib.escapeShellArg clone} \
+        || warnEcho "could not clone dotfiles; links under ~/.config will dangle"
+    fi
+  '';
 }
