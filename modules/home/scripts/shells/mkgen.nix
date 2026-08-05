@@ -1,13 +1,11 @@
 { pkgs }:
 let
-  genericTemplate =
-    pkgs.writeText "mkgen-template.nix"
-      (builtins.readFile ./templates/generic-shell.nix);
+  genericTemplate = pkgs.writeText "mkgen-template.nix" (
+    builtins.readFile ./templates/generic-shell.nix
+  );
 in
 pkgs.writeShellScriptBin "mkgen" ''
   set -euo pipefail
-  export UV_CACHE_DIR=~/data/.config/uv
-  mkdir -p "$UV_CACHE_DIR"
 
   if [ "$#" -ne 1 ]; then
     echo "usage: mkgen <project-name>" >&2

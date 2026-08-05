@@ -1,7 +1,4 @@
-{ host, ... }:
-let
-  inherit (import ../../hosts/${host}/variables.nix) consoleKeyMap;
-in
+{ ... }:
 {
   nix = {
     settings = {
@@ -31,6 +28,6 @@ in
   environment.variables = {
     NIXOS_OZONE_WL = "1";
   };
-  console.keyMap = "${consoleKeyMap}";
+  console.keyMap = "sv-latin1";
   system.stateVersion = "23.11"; # Do not change!
 }

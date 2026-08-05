@@ -25,7 +25,10 @@ in
       };
       gui = {
         theme = {
-          activeBorderColor = [ accent "bold" ];
+          activeBorderColor = [
+            accent
+            "bold"
+          ];
           inactiveBorderColor = [ muted ];
         };
         showListFooter = false;

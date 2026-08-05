@@ -1,16 +1,9 @@
-{ host
-, config
-, pkgs
-, ...
+{
+  vars,
+  config,
+  pkgs,
+  ...
 }:
-let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
-    extraMonitorSettings
-    keyboardLayout
-    stylixImage
-    ;
-in
 {
   home.packages = with pkgs; [
     awww
@@ -49,7 +42,7 @@ in
     };
     settings = {
       input = {
-        kb_layout = "${keyboardLayout}";
+        kb_layout = vars.keyboardLayout;
         kb_options = [
           "grp:alt_caps_toggle"
           "caps:super"
@@ -97,7 +90,7 @@ in
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         enable_swallow = false;
-        vrr = 0; #Variable Refresh Rate  Might need to set to 0 for NVIDIA/AQ_DRM_DEVICES
+        vrr = 0; # Variable Refresh Rate  Might need to set to 0 for NVIDIA/AQ_DRM_DEVICES
         # Screen flashing to black momentarily or going black when app is fullscreen
         # Try setting vrr to 0
 
@@ -165,10 +158,9 @@ in
       };
     };
 
-    extraConfig = "
+    extraConfig = ''
       monitor=,preferred,auto,auto
-      monitor=Virtual-1,1920x1080@60,auto,1
-      ${extraMonitorSettings}
-    ";
+      ${vars.monitors}
+    '';
   };
 }

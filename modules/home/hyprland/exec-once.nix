@@ -1,10 +1,4 @@
-{ host, ... }:
-let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
-    stylixImage
-    ;
-in
+{ vars, ... }:
 {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
@@ -18,10 +12,9 @@ in
       "killall -q awww;sleep .5 && awww-daemon"
       "killall -q waybar;sleep .5 && waybar"
       "killall -q swaync;sleep .5 && swaync"
-      "#wallsetter &"
       "pypr &"
       "nm-applet --indicator"
-      "sleep 1.0 && awww img ${stylixImage}"
+      "sleep 1.0 && awww img ${vars.wallpaper}"
     ];
   };
 }

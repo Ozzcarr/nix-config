@@ -1,8 +1,4 @@
-{ host, ... }:
-let
-  inherit (import ../../hosts/${host}/variables.nix)
-    tmuxEnable;
-in
+{ ... }:
 {
   imports = [
     ./bat.nix
@@ -24,18 +20,15 @@ in
     ./rofi
     ./qt.nix
     ./scripts
-    ./stylix-catppuccin.nix
     ./stylix.nix
     ./swappy.nix
     ./swaync.nix
     ./tealdeer.nix
-    ./virtmanager.nix
     ./waybar
     ./wlogout
     ./xdg.nix
     ./yazi
     ./zoxide.nix
     ./zsh.nix
-  ]
-  ++ (if tmuxEnable then [ ./tmux.nix ] else [ ]);
+  ];
 }

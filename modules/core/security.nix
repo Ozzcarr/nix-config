@@ -16,7 +16,7 @@ _: {
       '';
     };
     pam.services.swaylock = {
-      text = ''auth include login '';
+      text = "auth include login ";
     };
   };
 }

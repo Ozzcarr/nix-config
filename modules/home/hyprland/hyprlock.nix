@@ -1,4 +1,5 @@
-{ username, ... }: {
+{ username, vars, ... }:
+{
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -10,7 +11,7 @@
       };
       background = [
         {
-          path = "/home/${username}/Pictures/Wallpapers/cat-waves.png";
+          path = "${vars.wallpaper}";
           blur_passes = 3;
           blur_size = 8;
         }

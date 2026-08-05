@@ -1,18 +1,14 @@
-{ pkgs, lib, host, ... }:
+{ lib, vars, ... }:
 let
-  inherit (import ../../hosts/${host}/variables.nix) editor;
-  hostPackagesFile = builtins.readFile ../../hosts/${host}/host-packages.nix;
-  hasMicrosoftEdge = builtins.any (
-    line:
-    let
-      trimmed = lib.strings.trim line;
-    in
-    trimmed == "microsoft-edge" || lib.hasPrefix "microsoft-edge " trimmed
-  ) (lib.splitString "\n" hostPackagesFile);
-in {
+  inherit (vars) editor;
+in
+{
   xdg = {
     enable = true;
-    desktopEntries = lib.mkIf hasMicrosoftEdge {
+
+    # Edge renders badly under Wayland, so route its desktop entry through the
+    # edge-x11 wrapper instead of the one the package ships.
+    desktopEntries = lib.mkIf vars.hasEdge {
       microsoft-edge = {
         name = "Microsoft Edge";
         genericName = "Web Browser";
@@ -20,7 +16,10 @@ in {
         terminal = false;
         type = "Application";
         icon = "microsoft-edge";
-        categories = [ "Network" "WebBrowser" ];
+        categories = [
+          "Network"
+          "WebBrowser"
+        ];
         mimeType = [
           "text/html"
           "application/xhtml+xml"
@@ -40,21 +39,14 @@ in {
         "x-scheme-handler/https" = "firefox.desktop";
         "x-scheme-handler/about" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
-      } // lib.optionalAttrs (editor == "code") {
+      }
+      // lib.optionalAttrs (editor == "code") {
         "text/plain" = "code.desktop";
         "application/json" = "code.desktop";
         "application/ndjson" = "code.desktop";
         "text/javascript" = "code.desktop";
         "application/javascript" = "code.desktop";
       };
-    };
-    portal = {
-      enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
-      ];
-      configPackages = [ pkgs.hyprland ];
     };
   };
 }

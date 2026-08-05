@@ -1,17 +1,25 @@
-{ profile
-, username
-, pkgs
-, lib
-, config
-, ...
-}: {
+{
+  host,
+  username,
+  lib,
+  config,
+  ...
+}:
+{
   programs.zsh = {
     enable = true;
     dotDir = config.home.homeDirectory;
     autosuggestion.enable = true;
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" "pattern" "regexp" "root" "line" ];
+      highlighters = [
+        "main"
+        "brackets"
+        "pattern"
+        "regexp"
+        "root"
+        "line"
+      ];
     };
     historySubstringSearch.enable = true;
 
@@ -21,7 +29,7 @@
       size = 10000;
     };
 
-    plugins = [];
+    plugins = [ ];
 
     initContent = ''
       bindkey "\eh" backward-word
@@ -40,9 +48,9 @@
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
-      fr = "nh os switch --hostname ${profile}";
-      hr = "nh home switch /home/${username}/nix-config";
-      fu = "nh os switch --hostname ${profile} --update";
+      fr = "nh os switch --hostname ${host}";
+      hr = "nh home switch --configuration ${username}@${host} /home/${username}/nix-config";
+      fu = "nh os switch --hostname ${host} --update";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";
       man = "batman";

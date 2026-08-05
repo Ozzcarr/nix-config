@@ -1,11 +1,6 @@
-{ host, ... }:
+{ vars, ... }:
 let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
-    browser
-    terminal
-    editor
-    ;
+  inherit (vars) browser terminal editor;
 in
 {
   wayland.windowManager.hyprland.settings = {

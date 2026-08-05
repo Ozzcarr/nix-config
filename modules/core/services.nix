@@ -1,5 +1,4 @@
 {
-  profile,
   pkgs,
   inputs,
   ...
@@ -7,7 +6,9 @@
 let
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+    };
   };
 in
 {
@@ -35,10 +36,7 @@ in
     };
 
     smartd = {
-      enable =
-        if profile == "vm"
-        then false
-        else true;
+      enable = true;
       autodetect = true;
     };
     pipewire = {

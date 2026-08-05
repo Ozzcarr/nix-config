@@ -1,8 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware.nix
-    ./host-packages.nix
+    ./packages.nix
+    ../../modules/core
+    ../../modules/drivers
   ];
+
+  drivers.intel.enable = true;
 
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
@@ -10,6 +15,8 @@
     HandleLidSwitchDocked = "ignore";
   };
 
+  # Caps Lock acts as Escape when tapped and Ctrl when held, on the built-in
+  # keyboard only -- external keyboards keep their own mapping.
   services.interception-tools = {
     enable = true;
     plugins = [

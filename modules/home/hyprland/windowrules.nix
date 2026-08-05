@@ -1,9 +1,5 @@
-{host, ...}: let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
-    extraMonitorSettings
-    ;
-in {
+{ ... }:
+{
   wayland.windowManager.hyprland = {
     settings = {
       windowrule = [

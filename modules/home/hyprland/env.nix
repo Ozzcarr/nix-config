@@ -1,6 +1,6 @@
-{ host, ... }:
+{ vars, ... }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix) editor;
+  inherit (vars) editor;
 in
 {
   wayland.windowManager.hyprland = {

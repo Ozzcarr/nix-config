@@ -6,7 +6,9 @@
 let
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+    };
   };
 in
 {
@@ -16,10 +18,6 @@ in
       defaultEditor = true;
     };
     firefox.enable = true;
-    hyprland = {
-      enable = true; # set this so desktop file is created
-      withUWSM = false;
-    };
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -53,15 +51,12 @@ in
     docker-compose # Allows Controlling Docker From A Single File
     duf # Utility For Viewing Disk Usage In Terminal
     dysk # Disk space util nice formattting
-    eza # Beautiful ls Replacement
     fd # A simple, fast and user-friendly alternative to 'find'
     ffmpeg # Terminal Video / Audio Editing
     file-roller # Archive Manager
-    firefox
     gcc
     gimp # Great Photo Editor
     gnumake
-    htop # Simple Terminal Based System Monitor
     hyprpicker # Color Picker
     hyprshot # Screen capture
     eog # For Image Viewing
@@ -73,7 +68,6 @@ in
     lshw # Detailed Hardware Information
     mesa-demos # needed for inxi diag util
     mpv # Incredible Video Player
-    neovim
     nixfmt # Nix Formatter
     nwg-displays # configure monitor configs via GUI
     pavucontrol # For Editing Audio Levels & Devices
@@ -85,17 +79,14 @@ in
     spotify
     unstable.tailscale
     traceroute
-    tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     usbutils # Good Tools For USB Devices
-    uwsm # Universal Wayland Session Manager (optional must be enabled)
     v4l-utils # Used For Things Like OBS Virtual Camera
     vesktop # Alternate client for Discord with Vencord built-in
     unstable.vscode
-    waypaper  # Change wallpaper
+    waypaper # Change wallpaper
     wget # Tool For Fetching Files With Links
-    wireshark
     xrandr # Command line interface to X11 Resize, Rotate, and Reflect (RandR) extension
   ];
 }

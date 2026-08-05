@@ -1,17 +1,15 @@
 {
   pkgs,
   lib,
-  host,
+  vars,
   config,
-  profile,
   ...
 }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix) clock24h;
-  hasNvidia = profile == "nvidia" || profile == "nvidia-laptop";
-  gpuModule = if hasNvidia then [ "custom/gpu" ] else [];
+  gpuModule = if vars.hasNvidiaGpu then [ "custom/gpu" ] else [ ];
 in
-with lib; {
+with lib;
+{
   xdg.configFile."waybar/mocha.css".source = ./mocha.css;
 
   # Configure & Theme Waybar
@@ -23,9 +21,26 @@ with lib; {
         layer = "top";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "cpu" ] ++ gpuModule ++ [ "memory" ];
+        modules-left = [
+          "hyprland/workspaces"
+          "cpu"
+        ]
+        ++ gpuModule
+        ++ [ "memory" ];
         modules-center = [ "custom/music" ];
-        modules-right = [ "custom/pomodoro" "custom/vesktop-mic" "custom/vesktop-out" "pulseaudio" "backlight" "battery" "clock" "tray" "custom/notification" "custom/lock" "custom/power" ];
+        modules-right = [
+          "custom/pomodoro"
+          "custom/vesktop-mic"
+          "custom/vesktop-out"
+          "pulseaudio"
+          "backlight"
+          "battery"
+          "clock"
+          "tray"
+          "custom/notification"
+          "custom/lock"
+          "custom/power"
+        ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -55,35 +70,35 @@ with lib; {
           format = " {}%";
 
           exec = ''
-            sh -c '
-              q() { nvidia-smi "$@" 2>/dev/null | head -n1 | tr -d "\r" | sed "s/,//g" | xargs; }
+                        sh -c '
+                          q() { nvidia-smi "$@" 2>/dev/null | head -n1 | tr -d "\r" | sed "s/,//g" | xargs; }
 
-              util="$(q --query-gpu=utilization.gpu --format=csv,noheader,nounits)"
-              temp="$(q --query-gpu=temperature.gpu --format=csv,noheader,nounits)"
-              pwr="$(q --query-gpu=power.draw --format=csv,noheader,nounits)"
-              memu="$(q --query-gpu=memory.used --format=csv,noheader,nounits)"
-              memt="$(q --query-gpu=memory.total --format=csv,noheader,nounits)"
+                          util="$(q --query-gpu=utilization.gpu --format=csv,noheader,nounits)"
+                          temp="$(q --query-gpu=temperature.gpu --format=csv,noheader,nounits)"
+                          pwr="$(q --query-gpu=power.draw --format=csv,noheader,nounits)"
+                          memu="$(q --query-gpu=memory.used --format=csv,noheader,nounits)"
+                          memt="$(q --query-gpu=memory.total --format=csv,noheader,nounits)"
 
-              [ -n "$util" ] || util="N/A"
-              [ -n "$temp" ] || temp="N/A"
-              [ -n "$pwr" ] || pwr="N/A"
-              [ -n "$memu" ] || memu="N/A"
-              [ -n "$memt" ] || memt="N/A"
+                          [ -n "$util" ] || util="N/A"
+                          [ -n "$temp" ] || temp="N/A"
+                          [ -n "$pwr" ] || pwr="N/A"
+                          [ -n "$memu" ] || memu="N/A"
+                          [ -n "$memt" ] || memt="N/A"
 
-              esc() {
-                printf "%s" "$1" | sed \
-                  -e "s/\\\\/\\\\\\\\/g" \
-                  -e "s/\"/\\\\\"/g" \
-                  -e ":a;N;\$!ba;s/\n/\\\\n/g"
-              }
+                          esc() {
+                            printf "%s" "$1" | sed \
+                              -e "s/\\\\/\\\\\\\\/g" \
+                              -e "s/\"/\\\\\"/g" \
+                              -e ":a;N;\$!ba;s/\n/\\\\n/g"
+                          }
 
-              tip="GPU: $util%
-Temp: ''${temp}°C
-Power: ''${pwr} W
-VRAM: ''${memu} / ''${memt} MiB"
+                          tip="GPU: $util%
+            Temp: ''${temp}°C
+            Power: ''${pwr} W
+            VRAM: ''${memu} / ''${memt} MiB"
 
-              printf "{\"text\":\"%s\",\"tooltip\":\"%s\"}\n" "$(esc "$util")" "$(esc "$tip")"
-            '
+                          printf "{\"text\":\"%s\",\"tooltip\":\"%s\"}\n" "$(esc "$util")" "$(esc "$tip")"
+                        '
           '';
         };
 
@@ -134,13 +149,23 @@ VRAM: ''${memu} / ''${memt} MiB"
         clock = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format-alt = " {:%d/%m/%Y}";
-          format = if clock24h then " {:%H:%M}" else " {:%I:%M %p}";
+          format = " {:%H:%M}";
         };
 
         backlight = {
           device = "intel_backlight";
           format = "{icon}";
-          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         battery = {
@@ -170,7 +195,11 @@ VRAM: ''${memu} / ''${memt} MiB"
           format = "{icon} {volume}%";
           format-muted = "";
           format-icons = {
-            default = [ "" "" " " ];
+            default = [
+              ""
+              ""
+              " "
+            ];
           };
           on-click = "pavucontrol";
         };

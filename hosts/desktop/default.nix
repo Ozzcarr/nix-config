@@ -1,8 +1,13 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./hardware.nix
-    ./host-packages.nix
+    ./packages.nix
+    ../../modules/core
+    ../../modules/drivers
   ];
+
+  drivers.nvidia.enable = true;
 
   # Never auto-sleep on desktop
   services.logind.settings.Login = {
