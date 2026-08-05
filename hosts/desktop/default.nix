@@ -9,7 +9,6 @@
 
   drivers.nvidia.enable = true;
 
-  # Never auto-sleep on desktop
   services.logind.settings.Login = {
     IdleAction = "ignore";
     IdleActionSec = "0";

@@ -12,21 +12,20 @@ let
   };
 in
 {
-  # Services to start
   services = {
-    libinput.enable = true; # Input Handling
+    libinput.enable = true;
     fstrim.enable = true; # SSD Optimizer
     gvfs.enable = true; # For Mounting USB & More
     openssh = {
-      enable = true; # Enable SSH
+      enable = true;
       settings = {
-        PermitRootLogin = "no"; # Prevent root from SSH login
-        PasswordAuthentication = false; # Key-based auth only
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
       ports = [ 22 ];
     };
-    blueman.enable = true; # Bluetooth Support
+    blueman.enable = true;
     tumbler.enable = true; # Image/video preview
     gnome.gnome-keyring.enable = true;
     tailscale = {

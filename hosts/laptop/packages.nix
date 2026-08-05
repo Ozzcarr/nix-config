@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    # audacity
-    easyeffects # Advanced Audio Effects
+    easyeffects
     keymapp
     libreoffice
     microsoft-edge

@@ -6,6 +6,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    lazydocker # terminal UI for docker
+    lazydocker
   ];
 }

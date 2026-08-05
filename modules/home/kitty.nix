@@ -18,7 +18,6 @@
       tab_bar_edge = "top";
       tab_bar_margin_width = 0;
       tab_bar_style = "powerline";
-      #tab_bar_style = "fade";
       enabled_layouts = "splits";
     };
     extraConfig = ''
@@ -39,8 +38,7 @@
       map ctrl+shift+h         show_scrollback
 
       # Window management
-      map alt+n               new_window_with_cwd       #open in current dir
-      #map alt+n              new_os_window             #opens term in $HOME
+      map alt+n               new_window_with_cwd
       map alt+w               close_window
       map ctrl+shift+enter    launch --location=hsplit
       map ctrl+shift+s        launch --location=vsplit
@@ -57,7 +55,7 @@
       map ctrl+shift+6        sixth_window
       map ctrl+shift+7        seventh_window
       map ctrl+shift+8        eighth_window
-      map ctrl+shift+9        ninth_window # Tab management
+      map ctrl+shift+9        ninth_window
       map ctrl+shift+0        tenth_window
       map ctrl+shift+right    next_tab
       map ctrl+shift+left     previous_tab

@@ -1,4 +1,3 @@
-# SDDM is a display manager for X11 and Wayland
 {
   pkgs,
   config,

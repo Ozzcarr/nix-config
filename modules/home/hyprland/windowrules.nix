@@ -3,10 +3,7 @@
   wayland.windowManager.hyprland = {
     settings = {
       windowrule = [
-        #"no_blur true, match:xwayland true" # Helps prevent odd borders/shadows for xwayland apps
-        # downside it can impact other xwayland apps
-        # This rule is a template for a more targeted approach
-        "no_blur true, match:class ^(\bresolve\b)$, match:xwayland true" # Window rule for just resolve
+        "no_blur true, match:class ^(\bresolve\b)$, match:xwayland true"
         "tag +file-manager, match:class ^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
         "tag +terminal, match:class ^(com.mitchellh.ghostty|org.wezfurlong.wezterm|Alacritty|kitty|kitty-dropterm)$"
         "tag +browser, match:class ^(Brave-browser(-beta|-dev|-unstable)?)$"
