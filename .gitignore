@@ -1,2 +1,6 @@
+# nix build outputs
 result
 result-*
+
+# editor / tooling leftovers
+*.bak
