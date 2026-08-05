@@ -5,6 +5,7 @@
     ./btop.nix
     ./bottom.nix
     ./cava.nix
+    ./dotfiles.nix
     ./emoji.nix
     ./eza.nix
     ./fastfetch
