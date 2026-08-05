@@ -28,7 +28,6 @@
     ./waybar
     ./wlogout
     ./xdg.nix
-    ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
   ];

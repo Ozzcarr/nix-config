@@ -15,10 +15,11 @@ let
   # "store" uses the revision pinned in flake.lock, read-only.
   mode = "live";
 
-  # Directory names, resolved against both the repo root and ~/.config.
-  managed = [
-    "yazi"
-  ];
+  # Directory in the repo, which is also its name under ~/.config, mapped to the
+  # package it configures. Adding a program here installs it and links its config.
+  managed = {
+    yazi = pkgs.yazi;
+  };
 
   sourceFor =
     name:
@@ -28,9 +29,9 @@ let
       "${inputs.dotfiles}/${name}";
 in
 {
-  xdg.configFile = lib.genAttrs managed (name: {
-    source = sourceFor name;
-  });
+  home.packages = lib.attrValues managed;
+
+  xdg.configFile = lib.mapAttrs (name: _: { source = sourceFor name; }) managed;
 
   home.activation = lib.mkIf (mode == "live") {
     cloneDotfiles = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
