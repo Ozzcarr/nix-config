@@ -68,6 +68,7 @@ in
     lshw
     mesa-demos # inxi needs it to report graphics
     mpv
+    nixd
     nixfmt
     nwg-displays
     pavucontrol
