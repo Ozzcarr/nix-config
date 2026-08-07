@@ -10,15 +10,19 @@ let
   url = "https://github.com/ozzcarr/dotfiles";
   clone = "${config.home.homeDirectory}/dotfiles";
 
-  # Stow package -> the paths it owns, each relative to $HOME and present
-  # verbatim inside the package. `pkg` is optional.
+  # Stow package -> what its config needs on PATH, and the paths it owns, each
+  # relative to $HOME and present verbatim inside the package.
   managed = {
     yazi = {
-      pkg = pkgs.yazi;
+      packages = [ pkgs.yazi ];
       links = [ ".config/yazi" ];
     };
-    # Installed system-wide by modules/core/packages.nix.
     nvim = {
+      # neovim itself is system-wide, from modules/core/packages.nix.
+      packages = with pkgs; [
+        tree-sitter # nvim-treesitter shells out to it to build parsers
+        dwt1-shell-color-scripts # colorscript, in the snacks dashboard
+      ];
       links = [ ".config/nvim" ];
     };
   };
@@ -28,7 +32,7 @@ let
   sourceFor = path: config.lib.file.mkOutOfStoreSymlink "${clone}/${path}";
 in
 {
-  home.packages = lib.catAttrs "pkg" (lib.attrValues managed);
+  home.packages = lib.concatMap (entry: entry.packages or [ ]) (lib.attrValues managed);
 
   home.file = lib.concatMapAttrs (
     name: entry:
