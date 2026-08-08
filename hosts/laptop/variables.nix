@@ -2,4 +2,5 @@
   monitors = "monitor = eDP-1, 1920x1080@60, auto, 1.25";
 
   hasEdge = true;
+  kittyFontSize = 10;
 }

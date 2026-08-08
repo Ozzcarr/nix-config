@@ -12,6 +12,8 @@
   keyboardLayout = "se";
   wallpaper = ../wallpapers/cat-waves.png;
 
+  kittyFontSize = 12;
+
   monitors = "";
   hasNvidiaGpu = false;
   hasEdge = false;

@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, vars, ... }: {
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;
     settings = {
       font_family = "JetBrainsMonoNF";
-      font_size = 10;
+      font_size = vars.kittyFontSize;
       wheel_scroll_min_lines = 1;
       window_padding_width = 4;
       confirm_os_window_close = 0;
