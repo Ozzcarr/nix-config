@@ -25,6 +25,10 @@ let
       ];
       links = [ ".config/nvim" ];
     };
+    waybar = {
+      packages = [ pkgs.waybar ];
+      links = [ ".config/waybar" ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their

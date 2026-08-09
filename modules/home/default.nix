@@ -25,7 +25,6 @@
     ./swappy.nix
     ./swaync.nix
     ./tealdeer.nix
-    ./waybar
     ./wlogout
     ./xdg.nix
     ./zoxide.nix
