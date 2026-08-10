@@ -17,7 +17,6 @@
     ./hyprland
     ./lazygit.nix
     ./obs-studio.nix
-    ./rofi
     ./qt.nix
     ./scripts
     ./starship.nix

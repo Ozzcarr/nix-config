@@ -44,6 +44,13 @@ let
       # wiring (see starship.nix), but settings = {} so it generates nothing.
       links = [ ".config/starship.toml" ];
     };
+    rofi = {
+      packages = [ pkgs.rofi ];
+      links = [
+        ".config/rofi"
+        ".local/share/rofi"
+      ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
