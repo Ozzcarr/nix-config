@@ -28,6 +28,7 @@
     # Themed by hand elsewhere, or owned by the dotfiles repo.
     targets = {
       waybar.enable = false;
+      kitty.enable = false;
       rofi.enable = false;
       hyprland.enable = false;
       hyprlock.enable = false;

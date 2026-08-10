@@ -29,6 +29,10 @@ let
       packages = [ pkgs.waybar ];
       links = [ ".config/waybar" ];
     };
+    kitty = {
+      packages = [ pkgs.kitty ];
+      links = [ ".config/kitty" ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
