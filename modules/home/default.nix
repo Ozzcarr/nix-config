@@ -20,6 +20,7 @@
     ./rofi
     ./qt.nix
     ./scripts
+    ./starship.nix
     ./stylix.nix
     ./swappy.nix
     ./swaync.nix
@@ -27,6 +28,5 @@
     ./wlogout
     ./xdg.nix
     ./zoxide.nix
-    ./zsh.nix
   ];
 }

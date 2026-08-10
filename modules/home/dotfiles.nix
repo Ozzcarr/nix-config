@@ -33,6 +33,12 @@ let
       packages = [ pkgs.kitty ];
       links = [ ".config/kitty" ];
     };
+    zsh = {
+      # zsh itself is system-wide (users.users.oscar.shell, modules/core/user.nix).
+      # Oh My Zsh + its plugins are cloned by .zshrc itself on first run, not
+      # nix packages, so this config also works unmodified on non-NixOS boxes.
+      links = [ ".zshrc" ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
