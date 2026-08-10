@@ -51,6 +51,17 @@ let
         ".local/share/rofi"
       ];
     };
+    hyprland = {
+      # wayland.windowManager.hyprland stays home-manager managed for its
+      # systemd session wiring (see hyprland.nix); it writes a minimal
+      # .config/hypr/hyprland.conf stub that `source`s the real one below, so
+      # that one file can't also be linked here. hyprlock/hypridle have no
+      # generated config (settings = {}), so their files link normally.
+      links = [
+        ".config/hypr/hyprlock.conf"
+        ".config/hypr/hypridle.conf"
+      ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
