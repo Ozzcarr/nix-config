@@ -30,6 +30,7 @@
       waybar.enable = false;
       kitty.enable = false;
       rofi.enable = false;
+      starship.enable = false;
       hyprland.enable = false;
       hyprlock.enable = false;
       ghostty.enable = false;

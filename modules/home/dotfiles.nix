@@ -39,6 +39,11 @@ let
       # nix packages, so this config also works unmodified on non-NixOS boxes.
       links = [ ".zshrc" ];
     };
+    starship = {
+      # programs.starship stays enabled for the package + STARSHIP_CONFIG
+      # wiring (see starship.nix), but settings = {} so it generates nothing.
+      links = [ ".config/starship.toml" ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
