@@ -12,6 +12,7 @@
     ./security.nix
     ./services.nix
     ./steam.nix
+    ./stylix.nix
     ./system.nix
     ./user.nix
     ./virtualisation.nix

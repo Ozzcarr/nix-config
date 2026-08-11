@@ -1,6 +1,6 @@
-{ pkgs, vars, ... }:
+{ pkgs, config, ... }:
 let
-  inherit (vars) colors;
+  colors = config.stylix.base16Scheme;
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "pixel_sakura";
     themeConfig = {

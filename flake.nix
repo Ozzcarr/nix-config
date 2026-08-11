@@ -11,6 +11,8 @@
     };
 
     claude-desktop.url = "github:patrickjaja/claude-desktop-extra";
+
+    stylix.url = "github:danth/stylix/release-26.05";
   };
 
   outputs =
@@ -37,17 +39,19 @@
       };
 
       # Handed to every module as `vars`, so nothing reaches into hosts/ by path.
-      varsFor = host: import ./hosts/common.nix // import ./hosts/${host}/variables.nix;
+      vars = import ./hosts/common.nix;
 
       mkNixos =
         host:
         lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs username host;
-            vars = varsFor host;
+            inherit inputs username host vars;
           };
-          modules = [ ./hosts/${host} ];
+          modules = [
+            inputs.stylix.nixosModules.stylix
+            ./hosts/${host}
+          ];
         };
 
       # Standalone home-manager, for rebuilding the user config without a full
@@ -57,10 +61,10 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit inputs username host;
-            vars = varsFor host;
+            inherit inputs username host vars;
           };
           modules = [
+            inputs.stylix.homeModules.stylix
             ./modules/home
             {
               home.username = username;
