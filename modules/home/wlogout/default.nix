@@ -32,16 +32,24 @@
         "label" = "lock";
         "action" = "sleep 1; hyprlock";
         "text" = "Lock";
-        "keybind" = "l";
+        "keybind" = "o";
       }
       {
         "label" = "hibernate";
         "action" = "sleep 1; systemctl hibernate";
         "text" = "Hibernate";
-        "keybind" = "h";
+        "keybind" = "b";
       }
     ];
     style = ''
+      /* h/j/k/l reuse GTK's own arrow-key focus-navigation signal, so they
+         move between buttons exactly like the arrow keys already do. */
+      @binding-set vim-nav {
+        bind "h" { "move-focus" (left) };
+        bind "j" { "move-focus" (down) };
+        bind "k" { "move-focus" (up) };
+        bind "l" { "move-focus" (right) };
+      }
       * {
         font-family: "JetBrainsMono NF", FontAwesome, sans-serif;
       	background-image: none;
@@ -49,6 +57,7 @@
       }
       window {
       	background-color: rgba(12, 12, 12, 0.1);
+        -gtk-key-bindings: vim-nav;
       }
       button {
       	color: #${vars.colors.base05};
@@ -61,11 +70,17 @@
       	border: 3px solid #${vars.colors.base05};
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
+      /* Keyboard focus is the one authoritative "this is what Enter
+         triggers" indicator. Hover is a lighter preview so it doesn't read
+         as a second, equally-active selection when it lands on a different
+         button than the current focus. */
       button:focus,
-      button:active,
-      button:hover {
+      button:active {
         color: #${vars.colors.base0B};
         background-color: rgba(12, 12, 12, 0.5);
+        border: 3px solid #${vars.colors.base0B};
+      }
+      button:hover {
         border: 3px solid #${vars.colors.base0B};
       }
       #logout {
