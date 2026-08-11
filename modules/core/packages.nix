@@ -46,6 +46,7 @@ in
     cmake
     cmatrix
     cowsay
+    claude-code
     inputs.claude-desktop.packages.x86_64-linux.default
     delta
     docker-compose

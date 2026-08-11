@@ -29,10 +29,7 @@ let
       links = [ ".config/kitty" ];
     };
     lazygit = {
-      packages = [
-        pkgs.lazygit
-        pkgs.xsel
-      ];
+      packages = [ pkgs.lazygit ];
       links = [ ".config/lazygit" ];
     };
     zsh = {
