@@ -7,7 +7,6 @@
     ./cava.nix
     ./cursor.nix
     ./dotfiles.nix
-    ./emoji.nix
     ./eza.nix
     ./fastfetch
     ./fzf.nix

@@ -1,5 +1,3 @@
-# Config kept in the dotfiles repo rather than in Nix, so it can be edited
-# without a rebuild and reused on machines that aren't NixOS.
 {
   config,
   lib,
@@ -10,18 +8,15 @@ let
   url = "https://github.com/ozzcarr/dotfiles";
   clone = "${config.home.homeDirectory}/dotfiles";
 
-  # Stow package -> what its config needs on PATH, and the paths it owns, each
-  # relative to $HOME and present verbatim inside the package.
   managed = {
     yazi = {
       packages = [ pkgs.yazi ];
       links = [ ".config/yazi" ];
     };
     nvim = {
-      # neovim itself is system-wide, from modules/core/packages.nix.
       packages = with pkgs; [
-        tree-sitter # nvim-treesitter shells out to it to build parsers
-        dwt1-shell-color-scripts # colorscript, in the snacks dashboard
+        tree-sitter
+        dwt1-shell-color-scripts
       ];
       links = [ ".config/nvim" ];
     };
@@ -34,29 +29,20 @@ let
       links = [ ".config/kitty" ];
     };
     zsh = {
-      # zsh itself is system-wide (users.users.oscar.shell, modules/core/user.nix).
-      # Oh My Zsh + its plugins are cloned by .zshrc itself on first run, not
-      # nix packages, so this config also works unmodified on non-NixOS boxes.
       links = [ ".zshrc" ];
     };
     starship = {
-      # programs.starship stays enabled for the package + STARSHIP_CONFIG
-      # wiring (see starship.nix), but settings = {} so it generates nothing.
       links = [ ".config/starship.toml" ];
     };
     rofi = {
-      packages = [ pkgs.rofi ];
-      links = [
-        ".config/rofi"
-        ".local/share/rofi"
+      packages = [
+        pkgs.rofi
+        pkgs.rofi-calc
+        pkgs.libqalculate
       ];
+      links = [ ".config/rofi" ];
     };
     hyprland = {
-      # wayland.windowManager.hyprland stays home-manager managed for its
-      # systemd session wiring (see hyprland.nix); it writes a minimal
-      # .config/hypr/hyprland.conf stub that `source`s the real one below, so
-      # that one file can't also be linked here. hyprlock/hypridle have no
-      # generated config (settings = {}), so their files link normally.
       links = [
         ".config/hypr/hyprlock.conf"
         ".config/hypr/hypridle.conf"
@@ -69,8 +55,6 @@ let
     };
   };
 
-  # Out of store, so edits need no rebuild and programs can write inside their
-  # own config directory (vim.pack keeps a lockfile in ~/.config/nvim).
   sourceFor = path: config.lib.file.mkOutOfStoreSymlink "${clone}/${path}";
 in
 {
@@ -82,6 +66,8 @@ in
       map (link: lib.nameValuePair link { source = sourceFor "${name}/${link}"; }) entry.links
     )
   ) managed;
+
+  systemd.user.sessionVariables.ROFI_PLUGIN_PATH = "${pkgs.rofi-calc}/lib/rofi";
 
   home.activation.cloneDotfiles = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
     if [ ! -e ${lib.escapeShellArg clone} ]; then
