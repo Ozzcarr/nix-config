@@ -10,7 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix/release-26.05";
     claude-desktop.url = "github:patrickjaja/claude-desktop-extra";
   };
 
@@ -62,7 +61,6 @@
             vars = varsFor host;
           };
           modules = [
-            inputs.stylix.homeModules.stylix
             ./modules/home
             {
               home.username = username;

@@ -5,6 +5,7 @@
     ./btop.nix
     ./bottom.nix
     ./cava.nix
+    ./cursor.nix
     ./dotfiles.nix
     ./emoji.nix
     ./eza.nix
@@ -20,7 +21,6 @@
     ./qt.nix
     ./scripts
     ./starship.nix
-    ./stylix.nix
     ./swappy.nix
     ./swaync.nix
     ./tealdeer.nix

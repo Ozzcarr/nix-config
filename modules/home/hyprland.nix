@@ -21,8 +21,6 @@
     "xdg-desktop-autostart.target"
   ];
 
-  # ~/Pictures/Wallpapers itself comes from the dotfiles "wallpapers" package,
-  # see dotfiles.nix.
   home.file = {
     ".avatar.icon".source = ./hyprland/avatar.png;
     ".config/avatar.png".source = ./hyprland/avatar.png;

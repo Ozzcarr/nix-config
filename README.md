@@ -1,7 +1,7 @@
 # nix-config
 
-NixOS configuration for my machines. Hyprland on Wayland, themed with
-[stylix](https://github.com/danth/stylix), user config via home-manager.
+NixOS configuration for my machines. Hyprland on Wayland, themed Catppuccin
+Mocha, user config via home-manager.
 
 ## Hosts
 
@@ -54,7 +54,6 @@ modules/
   core/                system config (NixOS modules)
   drivers/             opt-in GPU drivers
   home/                user config (home-manager modules)
-wallpapers/            stylix derives the color scheme from these
 ```
 
 Every module receives `vars` (`hosts/common.nix` overridden by

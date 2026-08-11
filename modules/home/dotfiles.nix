@@ -62,9 +62,6 @@ let
         ".config/hypr/hypridle.conf"
       ];
     };
-    wallpapers = {
-      links = [ "Pictures/Wallpapers" ];
-    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
