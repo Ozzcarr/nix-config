@@ -16,6 +16,7 @@
       nerd-fonts.im-writing
       nerd-fonts.blex-mono
       nerd-fonts.fantasque-sans-mono
+      nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
