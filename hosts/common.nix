@@ -3,18 +3,11 @@
   gitUsername = "Oscar Andersson";
   gitEmail = "anderssonoscar03@gmail.com";
 
-  browser = "firefox";
-  terminal = "kitty";
-
   # GUI editor only. $EDITOR is neovim, via programs.neovim.defaultEditor.
   editor = "code";
 
   keyboardLayout = "se";
   wallpaper = ../wallpapers/cat-waves.png;
 
-  kittyFontSize = 12;
-
-  monitors = "";
-  hasNvidiaGpu = false;
   hasEdge = false;
 }
