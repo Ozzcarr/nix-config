@@ -63,6 +63,10 @@ let
         ".config/hypr/mocha.conf"
       ];
     };
+    wlogout = {
+      packages = [ pkgs.wlogout ];
+      links = [ ".config/wlogout" ];
+    };
   };
 
   # Out of store, so edits need no rebuild and programs can write inside their
