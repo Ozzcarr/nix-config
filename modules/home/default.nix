@@ -15,7 +15,6 @@
     ./gtk.nix
     ./htop.nix
     ./hyprland.nix
-    ./lazygit.nix
     ./obs-studio.nix
     ./qt.nix
     ./scripts

@@ -28,6 +28,13 @@ let
       packages = [ pkgs.kitty ];
       links = [ ".config/kitty" ];
     };
+    lazygit = {
+      packages = [
+        pkgs.lazygit
+        pkgs.xsel
+      ];
+      links = [ ".config/lazygit" ];
+    };
     zsh = {
       links = [ ".zshrc" ];
     };
