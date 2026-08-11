@@ -60,6 +60,7 @@ let
       links = [
         ".config/hypr/hyprlock.conf"
         ".config/hypr/hypridle.conf"
+        ".config/hypr/mocha.conf"
       ];
     };
   };
