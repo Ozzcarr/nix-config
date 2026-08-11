@@ -23,5 +23,6 @@
       base0E = "cba6f7"; # mauve
       base0F = "f2cdcd"; # flamingo
     };
+    targets.plymouth.enable = true;
   };
 }
