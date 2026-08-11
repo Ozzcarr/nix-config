@@ -21,6 +21,8 @@
     "xdg-desktop-autostart.target"
   ];
 
+  systemd.user.sessionVariables.GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+
   home.file = {
     ".avatar.icon".source = ./hyprland/avatar.png;
     ".config/avatar.png".source = ./hyprland/avatar.png;
@@ -33,7 +35,6 @@
     systemd = {
       enable = true;
       enableXdgAutostart = true;
-      variables = [ "--all" ];
     };
     xwayland.enable = true;
     settings = { };
