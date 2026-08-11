@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
     (import ./edge-x11.nix { inherit pkgs; })
@@ -12,6 +12,5 @@
     (import ./shells/mkpy.nix { inherit pkgs; })
     (import ./shells/mkrust.nix { inherit pkgs; })
     (import ./task-waybar.nix { inherit pkgs; })
-    (import ./wallsetter.nix { inherit pkgs username; })
   ];
 }
