@@ -6,7 +6,6 @@
     (import ./vesktop-deafen.nix { inherit pkgs; })
     (import ./vesktop-status.nix { inherit pkgs; })
     (import ./gpu-status.nix { inherit pkgs; })
-    (import ./pomodoro-waybar.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
     (import ./shells/mkgen.nix { inherit pkgs; })
     (import ./shells/mkpy.nix { inherit pkgs; })
