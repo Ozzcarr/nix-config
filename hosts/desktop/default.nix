@@ -9,7 +9,11 @@
 
   drivers.nvidia.enable = true;
 
-  boot.kernelParams = [ "video=DP-2:2560x1440@165" ];
+  boot.kernelParams = [
+    "video=DP-2:2560x1440@165"
+    "video=HDMI-A-2:d"
+    "nvidia_drm.fbdev=1"
+  ];
 
   services.logind.settings.Login = {
     IdleAction = "ignore";
