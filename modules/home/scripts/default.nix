@@ -11,5 +11,6 @@
     (import ./shells/mkpy.nix { inherit pkgs; })
     (import ./shells/mkrust.nix { inherit pkgs; })
     (import ./task-waybar.nix { inherit pkgs; })
+    (import ./wallpaper.nix { inherit pkgs; })
   ];
 }
