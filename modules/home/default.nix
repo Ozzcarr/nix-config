@@ -5,7 +5,6 @@
     ./btop.nix
     ./bottom.nix
     ./cava.nix
-    ./cursor.nix
     ./dotfiles.nix
     ./eza.nix
     ./fastfetch
@@ -16,7 +15,6 @@
     ./htop.nix
     ./hyprland.nix
     ./obs-studio.nix
-    ./qt.nix
     ./scripts
     ./starship.nix
     ./stylix.nix

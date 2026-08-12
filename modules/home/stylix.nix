@@ -1,8 +1,13 @@
-{ ... }:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
     autoEnable = false;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
     base16Scheme = {
       scheme = "Catppuccin Mocha";
       author = "Catppuccin";
@@ -24,5 +29,9 @@
       base0F = "f2cdcd"; # flamingo
     };
     targets.btop.enable = true;
+    targets.qt = {
+      enable = true;
+      platform = "qtct";
+    };
   };
 }
