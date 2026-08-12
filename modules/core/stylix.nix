@@ -24,5 +24,6 @@
       base0F = "f2cdcd"; # flamingo
     };
     targets.plymouth.enable = true;
+    targets.console.enable = true;
   };
 }
