@@ -26,8 +26,8 @@ pkgs.writeShellScriptBin "vesktop-status" ''
     return 1
   }
 
-  input_id="$(find_stream_id "Chromium input" "Stream/Input/Audio" || true)"
-  output_id="$(find_stream_id "Chromium" "Stream/Output/Audio" || true)"
+  input_id="$(find_stream_id "vesktop" "Stream/Input/Audio" || true)"
+  output_id="$(find_stream_id "vesktop" "Stream/Output/Audio" || true)"
 
   input_muted=false
   output_muted=false

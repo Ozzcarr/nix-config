@@ -26,5 +26,5 @@ pkgs.writeShellScriptBin "vesktop-deafen" ''
   while IFS= read -r stream_id; do
     [ -n "$stream_id" ] || continue
     ${pkgs.wireplumber}/bin/wpctl set-mute "$stream_id" toggle
-  done < <(find_stream_ids "Chromium" "Stream/Output/Audio")
+  done < <(find_stream_ids "vesktop" "Stream/Output/Audio")
 ''
