@@ -78,7 +78,6 @@ in
     playerctl
     ripgrep
     socat # hyprshot needs it
-    spotify
     unstable.tailscale
     traceroute
     unrar

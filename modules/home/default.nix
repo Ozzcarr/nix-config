@@ -16,6 +16,7 @@
     ./hyprland.nix
     ./obs-studio.nix
     ./scripts
+    ./spicetify.nix
     ./starship.nix
     ./stylix.nix
     ./swappy.nix

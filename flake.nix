@@ -13,6 +13,11 @@
     claude-desktop.url = "github:patrickjaja/claude-desktop-extra";
 
     stylix.url = "github:danth/stylix/release-26.05";
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
