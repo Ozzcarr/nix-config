@@ -62,6 +62,7 @@ in
     hyprpicker
     hyprshot
     inxi
+    jq
     killall
     libnotify
     lm_sensors
@@ -76,6 +77,7 @@ in
     pciutils
     pkg-config
     playerctl
+    pnpm
     ripgrep
     socat # hyprshot needs it
     unstable.tailscale
