@@ -3,9 +3,9 @@ let
   sessions = "${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
   theme = "text=gray;time=gray;greet=gray;input=gray;action=gray;border=lightmagenta;title=lightmagenta;prompt=lightmagenta;button=lightmagenta";
 
-  # Re-probes HDMI-A-2, which is forced off at boot (see hosts/desktop/default.nix), before Hyprland starts.
+  # Re-probes HDMI-A-1, which is forced off at boot (see hosts/desktop/default.nix), before Hyprland starts.
   hyprlandUwsmReset = pkgs.writeShellScript "hyprland-uwsm-reset-session" ''
-    for f in /sys/class/drm/card*-HDMI-A-2/status; do
+    for f in /sys/class/drm/card*-HDMI-A-1/status; do
       [ -e "$f" ] && echo detect > "$f"
     done
     exec ${pkgs.uwsm}/bin/uwsm start -e -D Hyprland hyprland.desktop

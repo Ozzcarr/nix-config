@@ -11,7 +11,7 @@
 
   boot.kernelParams = [
     "video=DP-2:2560x1440@165"
-    "video=HDMI-A-2:d"
+    "video=HDMI-A-1:d"
     "nvidia_drm.fbdev=1"
   ];
 
