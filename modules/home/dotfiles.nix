@@ -32,6 +32,9 @@ let
       packages = [ pkgs.lazygit ];
       links = [ ".config/lazygit" ];
     };
+    tmux = {
+      links = [ ".tmux.conf" ];
+    };
     zsh = {
       links = [ ".zshrc" ];
     };

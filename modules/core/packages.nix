@@ -81,6 +81,7 @@ in
     ripgrep
     socat # hyprshot needs it
     unstable.tailscale
+    tmux
     traceroute
     unrar
     unzip
