@@ -17,6 +17,7 @@ in
       "nvidia"
       "nvidia_modeset"
       "nvidia_drm"
+      "nvidia_uvm"
     ];
 
     services.xserver.videoDrivers = [ "nvidia" ];
