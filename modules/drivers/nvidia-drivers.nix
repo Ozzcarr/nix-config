@@ -17,8 +17,9 @@ in
       "nvidia"
       "nvidia_modeset"
       "nvidia_drm"
-      "nvidia_uvm"
     ];
+
+    boot.kernelModules = [ "nvidia_uvm" ];
 
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
@@ -29,6 +30,11 @@ in
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+
+    environment.sessionVariables = {
+      __GL_SHADER_DISK_CACHE = "1";
+      __GL_SHADER_DISK_CACHE_SIZE = "12000000000";
     };
   };
 }

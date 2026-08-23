@@ -17,8 +17,4 @@
       ];
     };
   };
-
-  environment.sessionVariables = {
-    PROTON_NO_ESYNC = "1";
-  };
 }
