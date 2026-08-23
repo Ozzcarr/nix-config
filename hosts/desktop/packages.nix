@@ -9,7 +9,7 @@
     nodejs
     osu-lazer-bin
     teams-for-linux
-    xivlauncher
+    (xivlauncher.override { steam = steam.override { privateTmp = false; }; })
     zoom-us
   ];
 }
