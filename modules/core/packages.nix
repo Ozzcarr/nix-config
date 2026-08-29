@@ -87,7 +87,7 @@ in
     unzip
     usbutils
     v4l-utils
-    vesktop
+    unstable.vesktop
     unstable.vscode
     waypaper
     wget

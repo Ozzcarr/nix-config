@@ -23,6 +23,7 @@
     ./swaync.nix
     ./tealdeer.nix
     ./xdg.nix
+    ./xdph.nix
     ./zoxide.nix
   ];
 }
