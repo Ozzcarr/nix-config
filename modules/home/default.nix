@@ -14,6 +14,7 @@
     ./gtk.nix
     ./htop.nix
     ./hyprland.nix
+    ./nix-update.nix
     ./obs-studio.nix
     ./scripts
     ./spicetify.nix
