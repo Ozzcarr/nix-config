@@ -1,16 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
+{ pkgs, ... }:
 {
   services = {
     libinput.enable = true;
@@ -31,7 +19,7 @@ in
     tailscale = {
       enable = true;
       openFirewall = true;
-      package = unstable.tailscale;
+      package = pkgs.unstable.tailscale;
     };
 
     smartd = {

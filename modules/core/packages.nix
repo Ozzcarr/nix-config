@@ -1,16 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
+{ pkgs, inputs, ... }:
 {
   programs = {
     neovim = {

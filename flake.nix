@@ -38,9 +38,19 @@
 
       inherit (nixpkgs) lib;
 
+      # nixd only resolves packages reached through the name `pkgs`, so unstable
+      # is an overlay attribute rather than a per-file `import nixpkgs-unstable`.
+      unstableOverlay = final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (prev.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        };
+      };
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ unstableOverlay ];
       };
 
       # Handed to every module as `vars`, so nothing reaches into hosts/ by path.
@@ -55,6 +65,7 @@
           };
           modules = [
             inputs.stylix.nixosModules.stylix
+            { nixpkgs.overlays = [ unstableOverlay ]; }
             ./hosts/${host}
           ];
         };
@@ -85,6 +96,8 @@
       homeConfigurations = lib.listToAttrs (
         map (host: lib.nameValuePair "${username}@${host}" (mkHome host)) hosts
       );
+
+      legacyPackages.${system} = pkgs;
 
       formatter.${system} = pkgs.nixfmt;
 
