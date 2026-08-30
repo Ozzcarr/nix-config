@@ -1,4 +1,10 @@
 { pkgs, inputs, ... }:
+let
+  # Electron 43.3 through 43.4 export an empty /StatusNotifierItem and register
+  # it under a name the tray watcher rejects, so every Electron app silently
+  # loses its tray icon (electron/electron#52674). Stable's 43.1.0 predates it.
+  trayElectron = pkgs.electron_43;
+in
 {
   programs = {
     neovim = {
@@ -35,7 +41,7 @@
     cmatrix
     cowsay
     claude-code
-    inputs.claude-desktop.packages.x86_64-linux.default
+    (inputs.claude-desktop.packages.x86_64-linux.default.override { electron = trayElectron; })
     delta
     docker-compose
     duf
@@ -75,7 +81,7 @@
     unzip
     usbutils
     v4l-utils
-    unstable.vesktop
+    (unstable.vesktop.override { electron_43 = trayElectron; })
     unstable.vscode
     waypaper
     wget

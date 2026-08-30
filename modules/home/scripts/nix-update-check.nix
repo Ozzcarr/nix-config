@@ -5,6 +5,10 @@ pkgs.writeShellScriptBin "nix-update-check" ''
   set -euo pipefail
   export LC_ALL=C  # comm needs sort and snapshot to agree on collation
 
+  # `nix flake update` shells out to git, and the system profile this runs from
+  # does not carry one.
+  export PATH="${pkgs.git}/bin:''${PATH:-}"
+
   flake="''${NIX_FLAKE_DIR:-$HOME/nix-config}"
   host="''${1:-$(${pkgs.coreutils}/bin/uname -n)}"
   cache="''${XDG_CACHE_HOME:-$HOME/.cache}/nix-update"
