@@ -23,6 +23,7 @@
     ./swappy.nix
     ./swaync.nix
     ./tealdeer.nix
+    ./tray.nix
     ./xdg.nix
     ./xdph.nix
     ./zoxide.nix
