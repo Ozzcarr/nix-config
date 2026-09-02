@@ -10,6 +10,7 @@
       ExecStart = "${pkgs.tmux}/bin/tmux start-server";
       ExecStop = "${pkgs.tmux}/bin/tmux kill-server";
       KillMode = "control-group";
+      TimeoutStartSec = "20";
     };
     Install.WantedBy = [ "hyprland-session.target" ];
   };
