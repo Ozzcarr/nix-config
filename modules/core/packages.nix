@@ -11,7 +11,30 @@ in
       enable = true;
       defaultEditor = true;
     };
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      # Hide tab and url bar on Ctrl+Alt+H
+      autoConfig = ''
+        // skip 1st line
+        try {
+
+          let cmanifest = Cc['@mozilla.org/file/directory_service;1'].getService(Ci.nsIProperties).get('UChrm', Ci.nsIFile);
+          cmanifest.append('utils');
+          cmanifest.append('chrome.manifest');
+
+          if(cmanifest.exists()){
+            Components.manager.QueryInterface(Ci.nsIComponentRegistrar).autoRegister(cmanifest);
+            ChromeUtils.importESModule('chrome://userchromejs/content/boot.sys.mjs');
+          }
+
+        } catch(ex) {};
+      '';
+      # Add youtube to quarantined domains
+      preferences = {
+        "extensions.quarantinedDomains.list" =
+          "autoatendimento.bb.com.br,ibpf.sicredi.com.br,ibpj.sicredi.com.br,internetbanking.caixa.gov.br,www.ib12.bradesco.com.br,www2.bancobrasil.com.br,youtube.com,www.youtube.com,m.youtube.com";
+      };
+    };
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
