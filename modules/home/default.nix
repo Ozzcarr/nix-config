@@ -8,6 +8,7 @@
     ./dotfiles.nix
     ./eza.nix
     ./fastfetch
+    ./firefox.nix
     ./fzf.nix
     ./gh.nix
     ./git.nix

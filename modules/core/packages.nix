@@ -13,7 +13,7 @@ in
     };
     firefox = {
       enable = true;
-      # Hide tab and url bar on Ctrl+Alt+H
+      # Hide tab and url bar on Ctrl+Shift+H
       autoConfig = ''
         // skip 1st line
         try {
