@@ -27,7 +27,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/dc2016a9-78dc-4b59-a863-a393b87bf4bf";
+    device = "/dev/disk/by-uuid/f504960c-dd4c-4c20-b74f-19812f8c6401";
     fsType = "ext4";
   };
 
@@ -41,7 +41,7 @@
   };
 
   fileSystems."/home/oscar/data" = {
-    device = "/dev/disk/by-uuid/02f942d4-e960-408a-843c-bd49e5f68da6";
+    device = "/dev/disk/by-uuid/371de2bb-596f-40ab-9531-37ab78d24073";
     fsType = "ext4";
     options = [ "noatime" ];
   };
