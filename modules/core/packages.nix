@@ -1,9 +1,14 @@
 { pkgs, inputs, ... }:
 let
-  # Electron 43.3 through 43.4 export an empty /StatusNotifierItem and register
-  # it under a name the tray watcher rejects, so every Electron app silently
-  # loses its tray icon (electron/electron#52674). Stable's 43.1.0 predates it.
-  trayElectron = pkgs.electron_43;
+  # The package copies electron's unwrapped dist, dropping nixpkgs' wrapper and
+  # the CHROME_DEVEL_SANDBOX it sets, so Chromium traps on startup without this.
+  claudeDesktop = inputs.claude-desktop.packages.x86_64-linux.default.overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+    postFixup = (old.postFixup or "") + ''
+      wrapProgram $out/bin/claude-desktop \
+        --set CHROME_DEVEL_SANDBOX $out/lib/claude-desktop/chrome-sandbox
+    '';
+  });
 in
 {
   programs = {
@@ -64,7 +69,7 @@ in
     cmatrix
     cowsay
     claude-code
-    (inputs.claude-desktop.packages.x86_64-linux.default.override { electron = trayElectron; })
+    claudeDesktop
     delta
     docker-compose
     duf
@@ -104,7 +109,7 @@ in
     unzip
     usbutils
     v4l-utils
-    (unstable.vesktop.override { electron_43 = trayElectron; })
+    unstable.vesktop
     unstable.vscode
     waypaper
     wget
