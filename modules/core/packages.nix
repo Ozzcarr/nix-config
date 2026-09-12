@@ -79,6 +79,7 @@ in
     ffmpeg
     file-roller
     gcc
+    ghostscript
     gimp
     gnumake
     hyprpicker
