@@ -28,6 +28,7 @@
     ./tray.nix
     ./xdg.nix
     ./xdph.nix
+    ./zotero.nix
     ./zoxide.nix
   ];
 }

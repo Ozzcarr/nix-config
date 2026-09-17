@@ -115,5 +115,6 @@ in
     waypaper
     wget
     xrandr
+    zotero
   ];
 }
