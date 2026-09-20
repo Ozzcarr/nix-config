@@ -15,5 +15,7 @@
     # Let wheel re-probe HDMI-A-1 (force-disconnected at boot, see hosts/desktop/default.nix and modules/core/greetd.nix)
 
     SUBSYSTEM=="drm", KERNEL=="card*-HDMI-A-1", RUN+="${pkgs.bash}/bin/sh -c 'chgrp wheel /sys%p/status; chmod g+w /sys%p/status'"
+
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0ac3", ATTR{idProduct}=="ff0f", MODE="0666"
   '';
 }
