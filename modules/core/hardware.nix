@@ -18,4 +18,14 @@
 
     SUBSYSTEM=="usb", ATTR{idVendor}=="0ac3", ATTR{idProduct}=="ff0f", MODE="0666"
   '';
+
+  # Disable pen buttons
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Wacom CTL-672 Pen Buttons Disable]
+    MatchUdevType=tablet
+    MatchBus=usb
+    MatchVendor=0x056A
+    MatchProduct=0x037B
+    AttrEventCode=-BTN_STYLUS;-BTN_STYLUS2;
+  '';
 }
