@@ -3,6 +3,7 @@
   imports = [
     ./hardware.nix
     ./packages.nix
+    ./sunshine.nix
     ../../modules/core
     ../../modules/drivers
   ];

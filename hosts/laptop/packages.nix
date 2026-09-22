@@ -4,6 +4,7 @@
     keymapp
     libreoffice
     microsoft-edge
+    moonlight-qt
     nodejs
     teams-for-linux
     zoom-us
