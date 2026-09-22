@@ -13,7 +13,6 @@
       };
       ports = [ 22 ];
     };
-    blueman.enable = true;
     tumbler.enable = true; # Image/video preview
     gnome.gnome-keyring.enable = true;
     tailscale = {

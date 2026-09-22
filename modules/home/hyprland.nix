@@ -22,6 +22,21 @@
     "xdg-desktop-autostart.target"
   ];
 
+  # Auto-switches hyprmoncfg monitor profiles on hotplug/dock/lid events.
+  systemd.user.services.hyprmoncfgd = {
+    Unit = {
+      Description = "Hyprland monitor profile daemon (hyprmoncfgd)";
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "/run/current-system/sw/bin/hyprmoncfgd";
+      Restart = "on-failure";
+      RestartSec = 2;
+    };
+    Install.WantedBy = [ "default.target" ];
+  };
+
   systemd.user.sessionVariables.GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
 
   home.file = {

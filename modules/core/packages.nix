@@ -62,6 +62,7 @@ in
   environment.systemPackages = with pkgs; [
     android-tools
     appimage-run
+    bluetui
     brightnessctl
     clang-tools
     cliphist
@@ -82,8 +83,10 @@ in
     ghostscript
     gimp
     gnumake
+    unstable.hyprmoncfg
     hyprpicker
     hyprshot
+    impala
     inxi
     jq
     killall
@@ -95,8 +98,6 @@ in
     mpv
     nixd
     nixfmt
-    nwg-displays
-    pavucontrol
     pciutils
     pkg-config
     playerctl
@@ -114,6 +115,7 @@ in
     unstable.vscode
     waypaper
     wget
+    wiremix
     xrandr
     zotero
   ];
