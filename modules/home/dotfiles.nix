@@ -55,7 +55,6 @@ let
         ".config/hypr/hypridle.conf"
         ".config/hypr/mocha.conf"
         ".config/hypr/hyprsunset.conf"
-        ".config/hypr/monitors.conf"
       ];
     };
     hyprmoncfg = {
