@@ -24,7 +24,6 @@
     ./swappy.nix
     ./swaync.nix
     ./tealdeer.nix
-    ./tmux.nix
     ./tray.nix
     ./xdg.nix
     ./xdph.nix

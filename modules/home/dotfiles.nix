@@ -33,7 +33,11 @@ let
       links = [ ".config/lazygit" ];
     };
     tmux = {
-      links = [ ".tmux.conf" ];
+      packages = [ pkgs.tmuxp ];
+      links = [
+        ".tmux.conf"
+        ".config/tmuxp"
+      ];
     };
     zsh = {
       links = [ ".zshrc" ];
