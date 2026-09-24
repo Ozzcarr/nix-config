@@ -12,7 +12,7 @@
       settings.General.EnableNetworkConfiguration = true;
       settings.Network.NameResolvingService = "systemd";
     };
-    useDHCP = false;
+    dhcpcd.denyInterfaces = [ "wl*" ];
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
     firewall = {
       enable = true;
