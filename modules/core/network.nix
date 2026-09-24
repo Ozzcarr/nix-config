@@ -10,6 +10,7 @@
     wireless.iwd = {
       enable = true;
       settings.General.EnableNetworkConfiguration = true;
+      settings.Network.NameResolvingService = "systemd";
     };
     useDHCP = false;
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];

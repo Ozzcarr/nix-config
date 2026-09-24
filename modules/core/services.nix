@@ -20,7 +20,10 @@
       openFirewall = true;
       package = pkgs.unstable.tailscale;
     };
-
+    resolved = {
+      enable = true;
+      settings.Resolve.FallbackDNS = ["1.1.1.1" "8.8.8.8" "9.9.9.9"];
+    };
     smartd = {
       enable = true;
       autodetect = true;
