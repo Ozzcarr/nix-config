@@ -58,4 +58,7 @@
       };
     };
   };
+
+  systemd.user.services.pipewire.serviceConfig.CPUAffinity = "0-11";
+  systemd.user.services.pipewire-pulse.serviceConfig.CPUAffinity = "0-11";
 }
