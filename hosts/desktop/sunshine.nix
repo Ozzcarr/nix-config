@@ -14,11 +14,13 @@ let
         *"CLIENT CONNECTED"*)
           "$systemctl" --user stop hyprmoncfgd
           "$hyprmoncfg" apply "${streamingProfile}" --confirm-timeout 0
-          "$hyprctl" keyword input:sensitivity "${streamingSensitivity}"
+          "$hyprctl" eval 'hl.config({ input = { sensitivity = ${streamingSensitivity} } })'
           ;;
         *"CLIENT DISCONNECTED"*)
           "$systemctl" --user start hyprmoncfgd
-          "$hyprctl" reload
+          # config-only: hyprmoncfgd restores the monitors, and a full reload
+          # re-applies modes, which makes the displays blank and re-link.
+          "$hyprctl" reload config-only
           ;;
       esac
     done

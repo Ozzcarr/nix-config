@@ -1,9 +1,4 @@
-# Session/systemd integration only. The actual hyprland.conf, hyprlock.conf
-# and hypridle.conf content is owned by the dotfiles repo (see dotfiles.nix) -
-# each of these programs' home-manager modules is kept "enabled" purely to
-# retain the systemd session wiring and the runtime package, but with
-# settings = {} so home-manager generates no config of its own, and points at
-# the dotfiles-managed hyprland.conf via a `source` line instead.
+# Session/systemd wiring only; the config itself lives in the dotfiles repo.
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
@@ -47,14 +42,20 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    configType = "hyprlang";
+    configType = "lua";
     systemd = {
       enable = true;
       enableXdgAutostart = true;
     };
     xwayland.enable = true;
     settings = { };
-    extraConfig = "source = ~/dotfiles/hyprland/.config/hypr/hyprland.conf";
+    # The monitors require is duplicated from config/ for hyprmoncfg's sake.
+    extraConfig = ''
+      require("config")
+      if package.searchpath("monitors", package.path) then
+        require("monitors")
+      end
+    '';
   };
 
   programs.hyprlock = {

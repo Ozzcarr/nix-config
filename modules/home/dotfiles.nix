@@ -55,6 +55,7 @@ let
     };
     hyprland = {
       links = [
+        ".config/hypr/config"
         ".config/hypr/hyprlock.conf"
         ".config/hypr/hypridle.conf"
         ".config/hypr/mocha.conf"
