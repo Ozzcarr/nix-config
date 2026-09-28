@@ -6,6 +6,7 @@
     ./bottom.nix
     ./cava.nix
     ./dotfiles.nix
+    ./easyeffects.nix
     ./eza.nix
     ./fastfetch
     ./firefox.nix
