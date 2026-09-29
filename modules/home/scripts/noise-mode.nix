@@ -36,23 +36,19 @@ pkgs.writeShellScriptBin "noise-mode" ''
       exit 0
       ;;
     # EasyEffects 8 exposes no CLI or dbus route to its Reset History button,
-    # but reloading the preset rebuilds the plugin, which is what that button
-    # does internally (DeepFilterNet::clear_data).
-    reset)
-      load "voice-$(current)"
-      "$notify" -h boolean:transient:true "Noise removal" "History reset"
-      exit 0
-      ;;
+    # but loading the preset rebuilds the plugin, which is what that button
+    # does internally (DeepFilterNet::clear_data), so switching to deep always
+    # starts from a clean history.
     deep)
       load voice-deep
-      "$notify" -h boolean:transient:true "Noise removal" "Deep"
+      "$notify" -u low -h boolean:transient:true "Noise removal" "Deep"
       ;;
     light)
       load voice-light
-      "$notify" -h boolean:transient:true "Noise removal" "Light"
+      "$notify" -u low -h boolean:transient:true "Noise removal" "Light"
       ;;
     *)
-      echo "usage: noise-mode [deep|light|toggle|reset|status]" >&2
+      echo "usage: noise-mode [deep|light|toggle|status]" >&2
       exit 2
       ;;
   esac
