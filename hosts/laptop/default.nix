@@ -3,6 +3,7 @@
   imports = [
     ./hardware.nix
     ./packages.nix
+    ./speaker-fix.nix
     ../../modules/core
     ../../modules/drivers
   ];
