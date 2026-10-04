@@ -110,10 +110,8 @@ in
     unrar
     unzip
     usbutils
-    v4l-utils
     unstable.vesktop
     unstable.vscode
-    waypaper
     wget
     wiremix
     xrandr
