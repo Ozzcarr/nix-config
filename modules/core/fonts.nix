@@ -12,6 +12,7 @@
       jetbrains-mono
       material-icons
       maple-mono.NF
+      material-symbols
       minecraftia
       nerd-fonts.im-writing
       nerd-fonts.blex-mono

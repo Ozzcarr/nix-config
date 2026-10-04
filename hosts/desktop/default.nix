@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware.nix
+    ./gamemode.nix
     ./packages.nix
     ./sunshine.nix
     ../../modules/core

@@ -69,7 +69,7 @@ in
     cmake
     cmatrix
     cowsay
-    claude-code
+    unstable.claude-code
     claudeDesktop
     delta
     docker-compose

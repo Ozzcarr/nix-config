@@ -20,10 +20,6 @@ let
       ];
       links = [ ".config/nvim" ];
     };
-    waybar = {
-      packages = [ pkgs.waybar ];
-      links = [ ".config/waybar" ];
-    };
     kitty = {
       packages = [ pkgs.kitty ];
       links = [ ".config/kitty" ];
@@ -46,11 +42,7 @@ let
       links = [ ".config/starship.toml" ];
     };
     rofi = {
-      packages = [
-        pkgs.rofi
-        pkgs.rofi-calc
-        pkgs.libqalculate
-      ];
+      packages = [ pkgs.rofi ];
       links = [ ".config/rofi" ];
     };
     hyprland = {
@@ -68,6 +60,17 @@ let
     wlogout = {
       packages = [ pkgs.wlogout ];
       links = [ ".config/wlogout" ];
+    };
+    quickshell = {
+      packages = [ pkgs.quickshell ];
+      # Linked per entry so home-manager can own generated/ inside the dir.
+      links = [
+        ".config/quickshell/oz/shell.qml"
+        ".config/quickshell/oz/config"
+        ".config/quickshell/oz/components"
+        ".config/quickshell/oz/services"
+        ".config/quickshell/oz/surfaces"
+      ];
     };
     swaync = {
       links = [
@@ -90,7 +93,6 @@ in
     )
   ) managed;
 
-  systemd.user.sessionVariables.ROFI_PLUGIN_PATH = "${pkgs.rofi-calc}/lib/rofi";
 
   home.activation.cloneDotfiles = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
     if [ ! -e ${lib.escapeShellArg clone} ]; then

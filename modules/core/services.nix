@@ -2,6 +2,9 @@
 {
   services = {
     libinput.enable = true;
+    # Used by Quickshell.Services.UPower.
+    upower.enable = true;
+    power-profiles-daemon.enable = true;
     fstrim.enable = true; # SSD Optimizer
     gvfs.enable = true; # For Mounting USB & More
     openssh = {

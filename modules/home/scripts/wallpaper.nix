@@ -15,6 +15,8 @@ pkgs.writeShellScriptBin "wallpaper" ''
       --transition-pos 0.5,0.5 \
       --transition-duration 1 \
       --transition-fps 60
+    # Lets the shell recolor its accent; fine if it isn't running.
+    ${pkgs.quickshell}/bin/qs -c oz ipc call wallpaper changed >/dev/null 2>&1 || true
   }
 
   list() {

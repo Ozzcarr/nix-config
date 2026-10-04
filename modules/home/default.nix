@@ -18,6 +18,8 @@
     ./hyprland.nix
     ./nix-update.nix
     ./obs-studio.nix
+    ./quickshell.nix
+    ./scheme.nix
     ./scripts
     ./spicetify.nix
     ./starship.nix
@@ -25,7 +27,6 @@
     ./swappy.nix
     ./swaync.nix
     ./tealdeer.nix
-    ./tray.nix
     ./xdg.nix
     ./xdph.nix
     ./zotero.nix
