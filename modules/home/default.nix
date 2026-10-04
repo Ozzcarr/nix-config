@@ -25,7 +25,6 @@
     ./starship.nix
     ./stylix.nix
     ./swappy.nix
-    ./swaync.nix
     ./tealdeer.nix
     ./xdg.nix
     ./xdph.nix

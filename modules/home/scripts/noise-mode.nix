@@ -9,6 +9,10 @@ pkgs.writeShellScriptBin "noise-mode" ''
   easyeffects=${pkgs.easyeffects}/bin/easyeffects
   notify=${pkgs.libnotify}/bin/notify-send
 
+  flash() {
+    ${pkgs.quickshell}/bin/qs -c oz ipc call osd flash "$@" || true
+  }
+
   current() {
     cat "$state" 2>/dev/null || echo light
   }
@@ -41,11 +45,11 @@ pkgs.writeShellScriptBin "noise-mode" ''
     # starts from a clean history.
     deep)
       load voice-deep
-      "$notify" -u low -h boolean:transient:true "Noise removal" "Deep"
+      flash graphic_eq "Noise removal: deep"
       ;;
     light)
       load voice-light
-      "$notify" -u low -h boolean:transient:true "Noise removal" "Light"
+      flash graphic_eq "Noise removal: light"
       ;;
     *)
       echo "usage: noise-mode [deep|light|toggle|status]" >&2

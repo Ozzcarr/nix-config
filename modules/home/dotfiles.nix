@@ -72,13 +72,6 @@ let
         ".config/quickshell/oz/surfaces"
       ];
     };
-    swaync = {
-      links = [
-        ".config/swaync/config.json"
-        ".config/swaync/style.css"
-        ".config/swaync/mocha.css"
-      ];
-    };
   };
 
   sourceFor = path: config.lib.file.mkOutOfStoreSymlink "${clone}/${path}";
