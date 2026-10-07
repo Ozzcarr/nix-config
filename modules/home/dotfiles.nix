@@ -51,15 +51,10 @@ let
         ".config/hypr/hyprlock.conf"
         ".config/hypr/hypridle.conf"
         ".config/hypr/mocha.conf"
-        ".config/hypr/hyprsunset.conf"
       ];
     };
     hyprmoncfg = {
       links = [ ".config/hyprmoncfg" ];
-    };
-    wlogout = {
-      packages = [ pkgs.wlogout ];
-      links = [ ".config/wlogout" ];
     };
     quickshell = {
       packages = [ pkgs.quickshell ];
