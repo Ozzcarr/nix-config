@@ -10,6 +10,7 @@
   ];
 
   drivers.nvidia.enable = true;
+  drivers.intel.enable = true;
 
   boot.kernelParams = [
     "video=DP-2:2560x1440@165"

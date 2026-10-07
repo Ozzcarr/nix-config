@@ -36,9 +36,44 @@ let
     busctl=${pkgs.systemd}/bin/busctl
     ignore='${builtins.toJSON ignoredClasses}'
 
+    ps=${pkgs.procps}/bin/ps
+    pgrep=${pkgs.procps}/bin/pgrep
+    taskset=${pkgs.util-linux}/bin/taskset
+
     gamemode() {
       "$busctl" --user call com.feralinteractive.GameMode /com/feralinteractive/GameMode \
         com.feralinteractive.GameMode "$1" i "$2" >/dev/null
+    }
+
+    moved="$XDG_RUNTIME_DIR/gamemode-moved-pids"
+    isolate() {
+      ecores=$(cat /sys/devices/cpu_atom/cpus)
+      keep=$("$ps" -eo pid=,ppid=,comm= | ${pkgs.gawk}/bin/awk -v games="$1" '
+        { pp[$1] = $2; name[$1] = $3 }
+        END {
+          n = split(games, g, " ")
+          for (i = 1; i <= n; i++) {
+            root = g[i]
+            for (p = g[i]; p > 1; p = pp[p]) if (name[p] == "reaper") { root = p; break }
+            roots[root] = 1
+          }
+          for (pid in pp) for (p = pid; p > 1; p = pp[p]) if (p in roots) { print pid; break }
+        }' | xargs)
+      for pid in $("$pgrep" -U "$(id -u)"); do
+        case " $keep " in *" $pid "*) continue ;; esac
+        case "$(cat /proc/$pid/comm 2>/dev/null)" in .Hyprland-wrapp | Hyprland | Xwayland) continue ;; esac
+        "$taskset" -a -cp "$ecores" "$pid" >/dev/null 2>&1 && echo "$pid" >> "$moved"
+      done
+    }
+    # Vesktop stays on the E-cores; its launcher puts it there.
+    restore() {
+      [ -f "$moved" ] || return 0
+      all=$(cat /sys/devices/system/cpu/online)
+      for pid in $(sort -u "$moved"); do
+        ${pkgs.gnugrep}/bin/grep -qa vesktop /proc/$pid/cmdline 2>/dev/null && continue
+        "$taskset" -a -cp "$all" "$pid" >/dev/null 2>&1
+      done
+      rm -f "$moved"
     }
 
     registered=""
@@ -54,6 +89,8 @@ let
         case " $current " in *" $pid "*) ;; *) gamemode UnregisterGame "$pid" ;; esac
       done
       registered=$current
+      # Rerun on every event so processes started mid-game get moved too.
+      if [ -n "$current" ]; then isolate "$current"; else restore; fi
     }
 
     sync
