@@ -46,12 +46,7 @@ let
       links = [ ".config/rofi" ];
     };
     hyprland = {
-      links = [
-        ".config/hypr/config"
-        ".config/hypr/hyprlock.conf"
-        ".config/hypr/hypridle.conf"
-        ".config/hypr/mocha.conf"
-      ];
+      links = [ ".config/hypr/config" ];
     };
     hyprmoncfg = {
       links = [ ".config/hyprmoncfg" ];

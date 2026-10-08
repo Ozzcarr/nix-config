@@ -4,8 +4,8 @@ pkgs.writeShellScriptBin "wallpaper" ''
   set -euo pipefail
 
   DIR="$HOME/dotfiles/wallpapers"
-  # hyprlock reads this too, and detects the format from content rather than
-  # the name, so the link needs no extension.
+  # The shell resolves this link for its accent and lock screen, so it needs no
+  # extension.
   STATE="$HOME/.cache/current-wallpaper"
 
   apply() {

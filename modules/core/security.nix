@@ -15,8 +15,7 @@ _: {
         })
       '';
     };
-    pam.services.swaylock = {
-      text = "auth include login ";
-    };
+    # The shell's lock screen checks the password against this.
+    pam.services.oz-lock = { };
   };
 }

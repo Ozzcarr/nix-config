@@ -57,16 +57,4 @@
       end
     '';
   };
-
-  programs.hyprlock = {
-    enable = true;
-    package = pkgs.hyprlock;
-    settings = { };
-  };
-
-  services.hypridle = {
-    enable = true;
-    package = pkgs.hypridle;
-    settings = { };
-  };
 }
