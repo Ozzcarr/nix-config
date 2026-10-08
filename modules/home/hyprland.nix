@@ -8,7 +8,6 @@
     wl-clipboard
     swappy
     ydotool
-    hyprpolkitagent
     hyprshot
     hyprsunset
     hyprland-qtutils # needed for banners and ANR messages

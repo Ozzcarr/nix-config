@@ -41,10 +41,6 @@ let
     starship = {
       links = [ ".config/starship.toml" ];
     };
-    rofi = {
-      packages = [ pkgs.rofi ];
-      links = [ ".config/rofi" ];
-    };
     hyprland = {
       links = [ ".config/hypr/config" ];
     };

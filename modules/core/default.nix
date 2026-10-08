@@ -9,6 +9,7 @@
     ./network.nix
     ./nh.nix
     ./packages.nix
+    ./rebuild.nix
     ./security.nix
     ./services.nix
     ./steam.nix
