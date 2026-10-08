@@ -10,6 +10,24 @@ let
     set -euo pipefail
 
     cache="''${XDG_RUNTIME_DIR:-/tmp}/xdph-share-picker.selection"
+    preselect="''${XDG_RUNTIME_DIR:-/tmp}/xdph-share-picker.preselect"
+
+    # vesktop-stream leaves the game's window address here; pick that window without
+    # asking, and cache it like a manual pick so Vesktop's second ask replays it.
+    if [ -r "$preselect" ]; then
+      age=$(( $(${pkgs.coreutils}/bin/date +%s) - $(${pkgs.coreutils}/bin/stat -c %Y "$preselect") ))
+      address="$(${pkgs.coreutils}/bin/cat "$preselect")"
+      ${pkgs.coreutils}/bin/rm -f "$preselect"
+
+      # Entries are <handle>[HC>]<class>[HT>]<title>[HE>]<address>[HA>].
+      handle="$(printf '%s' "''${XDPH_WINDOW_SHARING_LIST:-}" |
+        ${pkgs.gawk}/bin/awk -v RS='\\[HA>\\]' -F '\\[H[CTE]>\\]' -v address="$address" '$4 == address { print $1; exit }')"
+
+      if [ "$age" -lt ${toString cacheSeconds} ] && [ -n "$handle" ]; then
+        printf '[SELECTION]r/window:%s\n' "$handle" | ${pkgs.coreutils}/bin/tee "$cache"
+        exit 0
+      fi
+    fi
 
     if [ -r "$cache" ]; then
       age=$(( $(${pkgs.coreutils}/bin/date +%s) - $(${pkgs.coreutils}/bin/stat -c %Y "$cache") ))

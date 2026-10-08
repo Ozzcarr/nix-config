@@ -4,6 +4,7 @@
     (import ./edge-x11.nix { inherit pkgs; })
     (import ./vesktop-mute.nix { inherit pkgs; })
     (import ./vesktop-deafen.nix { inherit pkgs; })
+    (import ./vesktop-stream.nix { inherit pkgs; })
     (import ./gpu-status.nix { inherit pkgs; })
     (import ./noise-mode.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
