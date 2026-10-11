@@ -15,6 +15,9 @@ pkgs.writeShellScriptBin "wallpaper" ''
       --transition-pos 0.5,0.5 \
       --transition-duration 1 \
       --transition-fps 60
+    # The login screen can't read the home directory, so it gets a copy
+    # (modules/core/greetd.nix).
+    cp -f "$1" /var/lib/oz-greeter/wallpaper 2>/dev/null || true
     # Lets the shell recolor its accent; fine if it isn't running.
     ${pkgs.quickshell}/bin/qs -c oz ipc call wallpaper changed >/dev/null 2>&1 || true
   }

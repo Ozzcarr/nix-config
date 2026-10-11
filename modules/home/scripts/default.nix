@@ -8,7 +8,6 @@
     (import ./gpu-status.nix { inherit pkgs; })
     (import ./noise-mode.nix { inherit pkgs; })
     (import ./obs-replay.nix { inherit pkgs; })
-    (import ./screenshootin.nix { inherit pkgs; })
     (import ./shells/mkgen.nix { inherit pkgs; })
     (import ./shells/mkpy.nix { inherit pkgs; })
     (import ./shells/mkrust.nix { inherit pkgs; })

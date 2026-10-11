@@ -4,11 +4,9 @@
   home.packages = with pkgs; [
     awww
     grim
-    slurp
     wl-clipboard
     swappy
     ydotool
-    hyprshot
     hyprsunset
     hyprland-qtutils # needed for banners and ANR messages
   ];

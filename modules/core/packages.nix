@@ -84,7 +84,6 @@ in
     gnumake
     unstable.hyprmoncfg
     hyprpicker
-    hyprshot
     impala
     inxi
     jq
@@ -102,7 +101,7 @@ in
     playerctl
     pnpm
     ripgrep
-    socat # hyprshot needs it
+    socat # steam-friends-tile.sh reads Hyprland events with it
     unstable.tailscale
     tmux
     traceroute

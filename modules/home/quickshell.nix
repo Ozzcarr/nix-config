@@ -6,8 +6,12 @@
   ...
 }:
 {
-  # Called by the launcher: qalc for the calculator mode.
-  home.packages = [ pkgs.libqalculate ];
+  # Called by the shell: qalc for the launcher's calculator, magick to crop
+  # screenshots.
+  home.packages = with pkgs; [
+    libqalculate
+    imagemagick
+  ];
 
   systemd.user.services.quickshell = {
     Unit = {
