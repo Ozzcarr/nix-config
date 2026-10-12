@@ -11,9 +11,7 @@ let
         --run '${pkgs.systemd}/bin/systemctl --user start vesktop-xwayland' \
         --run 'for _ in $(seq 50); do [ -S /tmp/.X11-unix/X${lib.removePrefix ":" vesktopDisplay} ] && break; sleep 0.1; done' \
         --set DISPLAY ${vesktopDisplay} \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ pkgs.unstable.libva ]} \
-        --add-flags "--ozone-platform=x11 --render-node-override=/dev/dri/by-path/pci-0000:00:02.0-render --disable-gpu-sandbox" \
-        --add-flags "--disable-features=AcceleratedVideoDecoder,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL"
+        --add-flags "--ozone-platform=x11 --disable-gpu-sandbox"
     '';
   };
 in
