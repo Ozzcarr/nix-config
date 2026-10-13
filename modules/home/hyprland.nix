@@ -1,5 +1,10 @@
 # Session/systemd wiring only; the config itself lives in the dotfiles repo.
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  host,
+  ...
+}:
 {
   home.packages = with pkgs; [
     awww
@@ -14,8 +19,10 @@
     "xdg-desktop-autostart.target"
   ];
 
-  # Auto-switches hyprmoncfg monitor profiles on hotplug/dock/lid events.
-  systemd.user.services.hyprmoncfgd = {
+  # Auto-switches hyprmoncfg monitor profiles on hotplug/dock/lid events. Not
+  # on the laptop: its closed-lid policy turns off the only screen on every lid
+  # close (and on resume, from a stale lid state), which drops the lock screen.
+  systemd.user.services.hyprmoncfgd = lib.mkIf (host == "desktop") {
     Unit = {
       Description = "Hyprland monitor profile daemon (hyprmoncfgd)";
       After = [ "graphical-session.target" ];
