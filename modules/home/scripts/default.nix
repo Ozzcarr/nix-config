@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  host,
+  ...
+}:
 {
   home.packages = [
     (import ./edge-x11.nix { inherit pkgs; })
@@ -7,10 +12,10 @@
     (import ./vesktop-stream.nix { inherit pkgs; })
     (import ./gpu-status.nix { inherit pkgs; })
     (import ./noise-mode.nix { inherit pkgs; })
-    (import ./obs-replay.nix { inherit pkgs; })
     (import ./shells/mkgen.nix { inherit pkgs; })
     (import ./shells/mkpy.nix { inherit pkgs; })
     (import ./shells/mkrust.nix { inherit pkgs; })
     (import ./wallpaper.nix { inherit pkgs; })
-  ];
+  ]
+  ++ lib.optional (host == "desktop") (import ./obs-replay.nix { inherit pkgs; });
 }

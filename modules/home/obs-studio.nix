@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  host,
   ...
 }:
 let
@@ -16,7 +17,7 @@ let
     '';
   };
 in
-{
+lib.mkIf (host == "desktop") {
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
