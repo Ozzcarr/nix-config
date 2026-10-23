@@ -40,12 +40,6 @@
     ];
   };
 
-  fileSystems."/home/oscar/data" = {
-    device = "/dev/disk/by-uuid/371de2bb-596f-40ab-9531-37ab78d24073";
-    fsType = "ext4";
-    options = [ "noatime" ];
-  };
-
   fileSystems."/home/oscar/games" = {
     device = "/dev/disk/by-uuid/620dd297-1443-4cf5-be56-052a972c3782";
     fsType = "ext4";

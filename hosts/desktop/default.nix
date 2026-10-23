@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
@@ -8,11 +13,18 @@
     ./sunshine.nix
     ../../modules/core
     ../../modules/drivers
+    inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
   drivers.nvidia.enable = true;
 
   boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+
     kernelParams = [
       "video=DP-2:2560x1440@165"
       "video=HDMI-A-1:d"
