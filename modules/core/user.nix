@@ -35,6 +35,7 @@
     description = vars.gitUsername;
     extraGroups = [
       "adbusers" # adb/fastboot without root
+      "pipewire" # realtime limits, so audio threads don't rely on the portal's failing Realtime call
       "docker" # access to docker as non-root
       "networkmanager"
       "wheel" # sudo access

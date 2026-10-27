@@ -17,14 +17,18 @@ pkgs.writeShellScriptBin "vesktop-stream" ''
     ${pkgs.libnotify}/bin/notify-send -a Vesktop "Stream" "$1"
   }
 
-  # Without a game in gamemode, stream whatever is focused.
+  # The focused game wins over other games in gamemode. Without any, stream whatever is focused.
   games="$(${pkgs.systemd}/bin/busctl --user --json=short call com.feralinteractive.GameMode \
     /com/feralinteractive/GameMode com.feralinteractive.GameMode ListGames 2>/dev/null |
     "$jq" -c '[.data[0][][0]]' || echo '[]')"
-  window="$("$hyprctl" clients -j | "$jq" -c --argjson games "$games" \
-    'map(select(.pid as $pid | $games | index($pid))) | first // empty')"
+  active="$("$hyprctl" activewindow -j)"
+  window="$("$jq" -c --argjson games "$games" 'select(.pid as $pid | $games | index($pid))' <<<"$active")"
   if [ -z "$window" ]; then
-    window="$("$hyprctl" activewindow -j)"
+    window="$("$hyprctl" clients -j | "$jq" -c --argjson games "$games" \
+      'map(select(.pid as $pid | $games | index($pid))) | first // empty')"
+  fi
+  if [ -z "$window" ]; then
+    window="$active"
   fi
 
   pid="$("$jq" -r '.pid // empty' <<<"$window")"
@@ -39,10 +43,14 @@ pkgs.writeShellScriptBin "vesktop-stream" ''
     END { for (p in parent) for (q = p; q > 1; q = parent[q]) if (q == root) { print p; break } }' |
     "$jq" -sc .)"
 
+  # Their PipeWire clients too, since streams from the ALSA plugin (osu!) carry no process id.
+  clients="$(${pkgs.pipewire}/bin/pw-dump | "$jq" -c --argjson pids "$pids" \
+    '[.[] | select(.type == "PipeWire:Interface:Client" and (.info.props["application.process.id"] as $pid | $pids | index($pid))) | .id | tostring]')"
+
   # xdph lists windows by their Hyprland address in decimal.
   printf '%d\n' "$("$jq" -r .address <<<"$window")" > "$preselect"
 
-  reply="$("$jq" -c --argjson pids "$pids" '{ title: .title, pids: $pids }' <<<"$window" |
+  reply="$("$jq" -c --argjson pids "$pids" --argjson clients "$clients" '{ title: .title, pids: $pids, clients: $clients }' <<<"$window" |
     ${pkgs.socat}/bin/socat -t 5 - "UNIX-CONNECT:$socket" 2>/dev/null || true)"
 
   # Only a stream that is starting will open the picker.
