@@ -48,7 +48,10 @@ in
       enable = true;
       enableSSHSupport = true;
     };
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = [ pkgs.icu ];
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
