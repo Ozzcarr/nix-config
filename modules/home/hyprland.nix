@@ -59,6 +59,7 @@
       if package.searchpath("monitors", package.path) then
         require("monitors")
       end
+      pcall(dofile, os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
     '';
   };
 }
