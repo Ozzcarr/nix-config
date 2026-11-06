@@ -17,6 +17,7 @@
     ./htop.nix
     ./hyprland.nix
     ./nix-update.nix
+    ./vencord-update.nix
     ./obs-studio.nix
     ./quickshell.nix
     ./scheme.nix
