@@ -61,7 +61,11 @@ let
         }' | xargs)
       for pid in $("$pgrep" -U "$(id -u)"); do
         case " $keep " in *" $pid "*) continue ;; esac
-        case "$(cat /proc/$pid/comm 2>/dev/null)" in .Hyprland-wrapp | Hyprland | Xwayland) continue ;; esac
+        # The audio graph runs in these, and DeepFilterNet misses its deadlines on E-cores.
+        case "$(cat /proc/$pid/comm 2>/dev/null)" in
+          .Hyprland-wrapp | Hyprland | Xwayland) continue ;;
+          pipewire | pipewire-pulse | wireplumber | .easyeffects-wr) continue ;;
+        esac
         "$taskset" -a -cp "$ecores" "$pid" >/dev/null 2>&1 && echo "$pid" >> "$moved"
       done
     }
