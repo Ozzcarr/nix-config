@@ -33,6 +33,7 @@ in
     alsa-scarlett-gui
     audacity
     easyeffects
+    kdePackages.kdenlive
     keymapp
     libreoffice
     microsoft-edge
