@@ -62,9 +62,9 @@ in
 
   environment.systemPackages = [ pruneShaderCache ];
 
-  # Background shader processing on all 20 threads.
+  # Background shader processing on 16 of 20 threads, leaving headroom for Discord and the desktop.
   systemd.user.tmpfiles.rules = [
-    "f+ %h/.local/share/Steam/steam_dev.cfg - - - - unShaderBackgroundProcessingThreads 20\\n"
+    "f+ %h/.local/share/Steam/steam_dev.cfg - - - - unShaderBackgroundProcessingThreads 16\\n"
   ];
 
   systemd.user.services.steam-prune-shader-cache = {

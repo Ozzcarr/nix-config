@@ -38,6 +38,7 @@ let
 
     ps=${pkgs.procps}/bin/ps
     pgrep=${pkgs.procps}/bin/pgrep
+    pkill=${pkgs.procps}/bin/pkill
     taskset=${pkgs.util-linux}/bin/taskset
 
     gamemode() {
@@ -68,9 +69,12 @@ let
         esac
         "$taskset" -a -cp "$ecores" "$pid" >/dev/null 2>&1 && echo "$pid" >> "$moved"
       done
+      # Steam's shader compile still causes lag spikes from the E-cores, so pause it.
+      "$pkill" -STOP -U "$(id -u)" -x fossilize_repla
     }
     # Vesktop stays on the E-cores; its launcher puts it there.
     restore() {
+      "$pkill" -CONT -U "$(id -u)" -x fossilize_repla
       [ -f "$moved" ] || return 0
       all=$(cat /sys/devices/system/cpu/online)
       for pid in $(sort -u "$moved"); do
