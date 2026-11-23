@@ -47,7 +47,11 @@ in
       dedicatedServer.openFirewall = false;
       gamescopeSession.enable = true;
       extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
-      package = pkgs.steam.override { privateTmp = false; };
+      package = pkgs.steam.override {
+        privateTmp = false;
+        # Only GE-Proton reads this; Valve's Proton ignores it.
+        extraEnv.PROTON_ENABLE_WAYLAND = "1";
+      };
     };
 
     gamescope = {
