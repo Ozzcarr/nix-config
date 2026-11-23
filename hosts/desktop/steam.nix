@@ -46,7 +46,7 @@ in
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = false;
       gamescopeSession.enable = true;
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
+      extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
       package = pkgs.steam.override { privateTmp = false; };
     };
 
