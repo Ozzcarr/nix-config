@@ -17,6 +17,12 @@ let
       packages = with pkgs; [
         tree-sitter
         dwt1-shell-color-scripts
+        # Just the binary: the whole package would put this Qt's QML modules on
+        # every program's import path.
+        (runCommand "qmlls" { } ''
+          mkdir -p $out/bin
+          ln -s ${qt6.qtdeclarative}/bin/qmlls $out/bin/qmlls
+        '')
       ];
       links = [ ".config/nvim" ];
     };
