@@ -15,6 +15,8 @@
       log.decorate = "full";
       log.date = "iso";
       merge.conflictStyle = "diff3";
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only";
       delta.features = "catppuccin-mocha";
 
       "delta \"catppuccin-mocha\"" = {

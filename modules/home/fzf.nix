@@ -30,7 +30,9 @@ in
       "--prompt='/ '"
       "-i"
       "--no-bold"
-      "--bind='enter:execute(nvim {})'"
+    ];
+    # Not in defaultOptions, which also apply to Ctrl-R, where entries are not files.
+    fileWidgetOptions = [
       "--preview='bat --style=numbers --color=always --line-range :500 {}'"
       "--preview-window=right:60%:wrap"
     ];

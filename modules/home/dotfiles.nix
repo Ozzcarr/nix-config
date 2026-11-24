@@ -36,7 +36,11 @@ let
       ];
     };
     zsh = {
-      links = [ ".zshrc" ];
+      packages = [ pkgs.eza ];
+      links = [
+        ".zshenv"
+        ".zshrc"
+      ];
     };
     starship = {
       links = [ ".config/starship.toml" ];
