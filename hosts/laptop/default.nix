@@ -10,6 +10,8 @@
 
   drivers.intel.enable = true;
 
+  zramSwap.enable = true;
+
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "suspend";
