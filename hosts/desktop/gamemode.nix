@@ -26,9 +26,9 @@ let
     "soffice"
   ];
 
-  # Treats every fullscreen window as a game: registers its process with
-  # gamemode while it is fullscreen, and unregisters it when it leaves
-  # fullscreen or closes. Maximized windows don't count.
+  # Treats every fullscreen window on a shown workspace as a game: registers
+  # its process with gamemode while it is, and unregisters it when it leaves
+  # fullscreen, its workspace is hidden, or it closes. Maximized windows don't count.
   gamemodeFullscreenWatch = pkgs.writeShellScript "gamemode-fullscreen-watch" ''
     hyprctl=${pkgs.hyprland}/bin/hyprctl
     jq=${pkgs.jq}/bin/jq
@@ -89,8 +89,10 @@ let
 
     registered=""
     sync() {
-      current=$("$hyprctl" clients -j | "$jq" -r --argjson ignore "$ignore" '
+      visible=$("$hyprctl" monitors -j | "$jq" -c '[.[].activeWorkspace.id]')
+      current=$("$hyprctl" clients -j | "$jq" -r --argjson ignore "$ignore" --argjson visible "$visible" '
         .[] | select(.fullscreen == 2)
+            | select(.workspace.id as $w | any($visible[]; . == $w))
             | select((.class | ascii_downcase) as $c | any($ignore[]; . as $p | $c | startswith($p)) | not)
             | .pid' | sort -u | xargs)
       for pid in $current; do
@@ -109,6 +111,7 @@ let
       while IFS= read -r line; do
         case "$line" in
           fullscreen\>\>* | openwindow\>\>* | closewindow\>\>*) sync ;;
+          workspace\>\>* | focusedmon\>\>* | movewindow\>\>*) sync ;;
         esac
       done
   '';
