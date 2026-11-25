@@ -66,6 +66,8 @@ let
         case "$(cat /proc/$pid/comm 2>/dev/null)" in
           .Hyprland-wrapp | Hyprland | Xwayland) continue ;;
           pipewire | pipewire-pulse | wireplumber | .easyeffects-wr) continue ;;
+          # Wine games block on it, and not every game has a reaper above it.
+          wineserver) continue ;;
         esac
         "$taskset" -a -cp "$ecores" "$pid" >/dev/null 2>&1 && echo "$pid" >> "$moved"
       done
