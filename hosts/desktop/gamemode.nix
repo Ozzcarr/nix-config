@@ -39,6 +39,7 @@ let
     ps=${pkgs.procps}/bin/ps
     pgrep=${pkgs.procps}/bin/pgrep
     pkill=${pkgs.procps}/bin/pkill
+    grep=${pkgs.gnugrep}/bin/grep
     taskset=${pkgs.util-linux}/bin/taskset
 
     gamemode() {
@@ -62,6 +63,8 @@ let
         }' | xargs)
       for pid in $("$pgrep" -U "$(id -u)"); do
         case " $keep " in *" $pid "*) continue ;; esac
+        # Decoding Discord streams fills the E-cores alone; it runs at nice 10 instead.
+        "$grep" -qa vesktop /proc/$pid/cmdline 2>/dev/null && continue
         # The audio graph runs in these, and DeepFilterNet misses its deadlines on E-cores.
         case "$(cat /proc/$pid/comm 2>/dev/null)" in
           .Hyprland-wrapp | Hyprland | Xwayland) continue ;;
@@ -74,13 +77,11 @@ let
       # Steam's shader compile still causes lag spikes from the E-cores, so pause it.
       "$pkill" -STOP -U "$(id -u)" -x fossilize_repla
     }
-    # Vesktop stays on the E-cores; its launcher puts it there.
     restore() {
       "$pkill" -CONT -U "$(id -u)" -x fossilize_repla
       [ -f "$moved" ] || return 0
       all=$(cat /sys/devices/system/cpu/online)
       for pid in $(sort -u "$moved"); do
-        ${pkgs.gnugrep}/bin/grep -qa vesktop /proc/$pid/cmdline 2>/dev/null && continue
         "$taskset" -a -cp "$all" "$pid" >/dev/null 2>&1
       done
       rm -f "$moved"
