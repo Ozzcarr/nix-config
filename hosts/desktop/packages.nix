@@ -7,7 +7,6 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/vesktop \
-        --run '${pkgs.util-linux}/bin/renice -n 10 -p $$ >/dev/null' \
         --run '${pkgs.systemd}/bin/systemctl --user start vesktop-xwayland' \
         --run 'for _ in $(seq 50); do [ -S /tmp/.X11-unix/X${lib.removePrefix ":" vesktopDisplay} ] && break; sleep 0.1; done' \
         --set DISPLAY ${vesktopDisplay} \

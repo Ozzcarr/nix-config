@@ -63,7 +63,7 @@ let
         }' | xargs)
       for pid in $("$pgrep" -U "$(id -u)"); do
         case " $keep " in *" $pid "*) continue ;; esac
-        # Decoding Discord streams fills the E-cores alone; it runs at nice 10 instead.
+        # Decoding Discord streams fills the E-cores alone.
         "$grep" -qa vesktop /proc/$pid/cmdline 2>/dev/null && continue
         # The audio graph runs in these, and DeepFilterNet misses its deadlines on E-cores.
         case "$(cat /proc/$pid/comm 2>/dev/null)" in
